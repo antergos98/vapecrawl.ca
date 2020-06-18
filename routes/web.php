@@ -15,4 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+Route::get('/search/{query}', function ($query) {
+    dd(\App\Product::search(('name:('.$query.')'))->get()->pluck('name'));
+});
 Route::get('/', 'HomeController@index')->name('home');
