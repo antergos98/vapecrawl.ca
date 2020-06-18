@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+@layer components {
+    .page-title {
+        @apply text-3xl font-bold mb-3 md:text-4xl;
+    }
+}

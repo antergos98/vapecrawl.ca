@@ -1,0 +1,28 @@
+image: laravelsail/php80-composer
+
+stages:
+  - test
+  - deploy
+
+cache:
+  paths:
+    - vendor/
+    - node_modules/
+
+variables:
+  MYSQL_DATABASE: vapecrawl_test
+  MYSQL_ROOT_PASSWORD: root
+  DB_HOST: mysql
+  DB_USERNAME: root
+  DB_PASSWORD: root
+  DB_DATABASE: vapecrawl_test
+
+phpunit:
+  stage: test
+  before_script:
+    - cp .env.example .env
+    - composer install --no-interaction --prefer-dist --optimize-autoloader
+    - php artisan key:generate
+    - php artisan migrate
+  script:
+    - vendor/bin/phpunit
