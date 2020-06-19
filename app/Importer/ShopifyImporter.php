@@ -3,6 +3,7 @@
 namespace App\Importer;
 
 use App\Product;
+use App\Vendor;
 use Illuminate\Support\Facades\Http;
 
 class ShopifyImporter implements ImporterInterface
@@ -24,7 +25,7 @@ class ShopifyImporter implements ImporterInterface
         $products = [];
 
         while (true) {
-            $apiUrl = $this->retailer->getUrl() . 'products.json?page=' . $page . '&limit=250';
+            $apiUrl = $this->vendor->url . 'products.json?page=' . $page . '&limit=250';
             $results = Http::get($apiUrl)->json();
 
             if (count($results['products']) === 0) {
