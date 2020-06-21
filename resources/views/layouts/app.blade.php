@@ -19,28 +19,29 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="bg-gray-900 text-white font-nunito">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                    </ul>
+        <nav class="mt-6 mb-12 md:mb-24">
+            <div class="max-w-6xl mx-auto px-6 xl:px-0">
+                <div class="flex flex-col items-center md:flex-row">
+                    <div class="md:mr-12">
+                        <a href="/" class="text-3xl font-bold ">Vapecrawl</a>
+                    </div>
+                    <div>
+                        <ul class="flex font-bold">
+                            <li><a class="mr-4" href="/">Home</a></li>
+                            <li><a class="mr-4" href="/contact">Contact us</a></li>
+                            <li><a href="/donate">Donate</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
     </div>
+    <main>
+        <div class="max-w-6xl mx-auto px-6 xl:px-0">
+            @yield('content')
+        </div>
+    </main>
 </body>
 </html>

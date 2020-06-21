@@ -12,6 +12,7 @@ class SearchController
 
         if (request()->query('q')) {
             $results = Product::search(request()->query('q'))->get();
+            $results->load('vendor');
         }
 
         if (request()->ajax()) {
