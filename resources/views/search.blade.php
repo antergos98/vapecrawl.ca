@@ -12,8 +12,8 @@
                 <div class="bg-gray-800 p-6 rounded">
                     <div class="flex flex-col md:flex-row">
                         <div class="flex flex-shrink-0 mb-6 md:mb-0 md:mr-6">
-                            <div class="object-cover mx-auto w-48 md:w-32 h-full">
-                                <img class="block mx-auto h-48 md:h-32 rounded" src="{{ $result->image }}" alt="">
+                            <div class="object-cover mx-auto w-48 md:w-24 lg:w-32 h-full">
+                                <img class="block mx-auto h-48 md:h-24 lg:h-32 rounded" src="{{ $result->image }}" alt="">
                             </div>
                         </div>
                         <div class="flex flex-col justify-between">

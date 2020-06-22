@@ -27,7 +27,7 @@
                     <div class="md:mr-12">
                         <a href="/" class="text-3xl font-bold ">Vapecrawl</a>
                     </div>
-                    <div>
+                    <div class="hidden">
                         <ul class="flex font-bold">
                             <li><a class="mr-4" href="/">Home</a></li>
                             <li><a class="mr-4" href="/contact">Contact us</a></li>
