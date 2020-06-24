@@ -13,9 +13,9 @@
                         <div class="flex flex-col justify-between">
                             <div>
                                 <div class="text-xl">
-                                    <a :href="item.url + '?ref=vapecrawl.ca'" target="_blank" :title="item.name">{{ item.name }}</a>
+                                    <a :href="item.url + '?ref=vapecrawl.ca&rel=noopener'" target="_blank" :title="item.name">{{ item.name }}</a>
                                 </div>
-                                <div class="text-gray-600 text-sm">Sold by <a :href="item.vendor.url + '?ref=vapecrawl.ca'" target="_blank" :title="item.vendor.name">{{ item.vendor.name }}</a></div>
+                                <div class="text-gray-600 text-sm">Sold by <a :href="item.vendor.url + '?ref=vapecrawl.ca&rel=noopener'" target="_blank" :title="item.vendor.name">{{ item.vendor.name }}</a></div>
                             </div>
                             <div class="flex">
                                 <div class="text-lg mr-3">
