@@ -15,15 +15,12 @@ require('laravel-mix-purgecss');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
+    .extract(['vue', 'vuex', 'axios'])
     .options({
         processCssUrls: false,
         postCss: [tailwindcss('./tailwind.config.js')],
     })
+    .version()
+    .sourceMaps()
     .purgeCss();
-
-if (mix.inProduction()) {
-    mix.version()
-} else {
-    mix.sourceMaps();
-}
 
