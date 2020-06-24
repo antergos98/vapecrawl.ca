@@ -7,12 +7,17 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Vapecrawl</title>
+    <meta name="description" content="Vapecrawl is search engine where you can quickly find vendors that have the cheapest vape products you are looking for.">
 
-    <!-- Scripts -->
-    <script src="/js/manifest.js"></script>
-    <script src="/js/vendor.js"></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-167607170-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-167607170-1');
+    </script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -29,11 +34,10 @@
                 <div class="md:mr-12">
                     <a href="/" class="text-3xl font-bold ">Vapecrawl</a>
                 </div>
-                <div class="hidden">
+                <div>
                     <ul class="flex font-bold">
                         <li><a class="mr-4" href="/">Home</a></li>
                         <li><a class="mr-4" href="/contact">Contact us</a></li>
-                        <li><a href="/donate">Donate</a></li>
                     </ul>
                 </div>
             </div>
@@ -46,5 +50,8 @@
     </main>
     <age-validation-modal></age-validation-modal>
 </div>
+<script src="/js/manifest.js"></script>
+<script src="/js/vendor.js"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
