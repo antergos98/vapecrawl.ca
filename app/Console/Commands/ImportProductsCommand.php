@@ -24,7 +24,7 @@ class ImportProductsCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Import products';
 
     /**
      * Create a new command instance.
