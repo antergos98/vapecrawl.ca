@@ -29,7 +29,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="bg-gray-900 text-white font-nunito">
 @include('shared._import_alert')
@@ -58,6 +58,6 @@
 </div>
 <script src="/js/manifest.js"></script>
 <script src="/js/vendor.js"></script>
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
