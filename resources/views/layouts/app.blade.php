@@ -42,6 +42,7 @@
             @yield('content')
         </div>
     </main>
+    <age-validation-modal></age-validation-modal>
 </div>
 </body>
 </html>

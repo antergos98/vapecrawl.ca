@@ -11,6 +11,7 @@ Vue.use(VueLazyload, {
 });
 
 Vue.component('results', require('./components/Results.vue').default);
+Vue.component('age-validation-modal', require('./components/AgeValidationModal').default);
 
 new Vue({
     el: '#app',
