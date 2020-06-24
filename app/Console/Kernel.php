@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('import:products')->daily()->thenPing('https://hc-ping.com/27b1d9a7-3624-4f45-805c-aedeadf2ee43');
+        $schedule->command('import:products')->daily()->thenPing('https://hc-ping.com/f22b2536-7af1-4ac9-82ad-d998e2eabfb5');
     }
 
     /**
