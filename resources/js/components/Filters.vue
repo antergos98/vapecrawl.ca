@@ -5,6 +5,7 @@
                 <multiselect placeholder="Sort by..." :show-labels="false" :show-pointer="false" label="label"
                              :options="sortOptions"
                              track-by="label"
+                             v-model="sort"
                              @input="onSortChange"></multiselect>
             </div>
         </div>
@@ -40,6 +41,7 @@
         components: {Multiselect},
         data: () => ({
             availability: null,
+            sort: null,
             vendors: [],
             sortOptions: [
                 {label: 'Price (low to high)', key: 'price', direction: 'asc'},
