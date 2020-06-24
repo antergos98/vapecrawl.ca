@@ -8,12 +8,17 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Vapecrawl</title>
-    <meta name="description" content="Vapecrawl is search engine where you can quickly find vendors that have the cheapest vape products you are looking for.">
+    <meta name="description"
+          content="Vapecrawl is search engine where you can quickly find vendors that have the cheapest vape products you are looking for.">
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-167607170-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', 'UA-167607170-1');
@@ -27,17 +32,18 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="bg-gray-900 text-white font-nunito">
+@include('shared._import_alert')
 <div id="app">
     <nav class="mt-6 mb-12 md:mb-24">
         <div class="max-w-6xl mx-auto px-6 xl:px-0">
             <div class="flex flex-col items-center md:flex-row">
-                <div class="md:mr-12">
+                <div class="md:mr-12 mb-3 md:mb-0">
                     <a href="/" class="text-3xl font-bold ">Vapecrawl</a>
                 </div>
                 <div>
                     <ul class="flex font-bold">
                         <li><a class="mr-4" href="/">Home</a></li>
-                        <li><a class="mr-4" href="/contact">Contact us</a></li>
+                        <li><a href="/contact">Contact us</a></li>
                     </ul>
                 </div>
             </div>
