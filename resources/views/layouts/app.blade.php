@@ -20,28 +20,28 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="bg-gray-900 text-white font-nunito">
-    <div id="app">
-        <nav class="mt-6 mb-12 md:mb-24">
-            <div class="max-w-6xl mx-auto px-6 xl:px-0">
-                <div class="flex flex-col items-center md:flex-row">
-                    <div class="md:mr-12">
-                        <a href="/" class="text-3xl font-bold ">Vapecrawl</a>
-                    </div>
-                    <div class="hidden">
-                        <ul class="flex font-bold">
-                            <li><a class="mr-4" href="/">Home</a></li>
-                            <li><a class="mr-4" href="/contact">Contact us</a></li>
-                            <li><a href="/donate">Donate</a></li>
-                        </ul>
-                    </div>
+<div id="app">
+    <nav class="mt-6 mb-12 md:mb-24">
+        <div class="max-w-6xl mx-auto px-6 xl:px-0">
+            <div class="flex flex-col items-center md:flex-row">
+                <div class="md:mr-12">
+                    <a href="/" class="text-3xl font-bold ">Vapecrawl</a>
+                </div>
+                <div class="hidden">
+                    <ul class="flex font-bold">
+                        <li><a class="mr-4" href="/">Home</a></li>
+                        <li><a class="mr-4" href="/contact">Contact us</a></li>
+                        <li><a href="/donate">Donate</a></li>
+                    </ul>
                 </div>
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
     <main>
         <div class="max-w-6xl mx-auto px-6 xl:px-0">
             @yield('content')
         </div>
     </main>
+</div>
 </body>
 </html>
