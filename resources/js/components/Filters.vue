@@ -80,7 +80,7 @@
 
 <style lang="scss">
     /* purgecss start ignore */
-    $text: #222;
+    $text: #1a202c;
     $main: #303030;
 
     .multiselect {
@@ -89,6 +89,10 @@
 
     .multiselect__tags {
         border: 1px solid #e2e8f0;
+    }
+
+    .multiselect__placeholder {
+        color: lighten($text, 15);
     }
 
     .multiselect__tag {
