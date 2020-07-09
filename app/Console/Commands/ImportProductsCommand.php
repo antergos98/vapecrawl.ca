@@ -48,10 +48,14 @@ class ImportProductsCommand extends Command
         Product::truncate();
 
         Vendor::all()->each(function(Vendor $vendor) {
-            $this->info('Starting to fetch products from ' . $vendor->name);
-            $class = "App\\Importer\\" . $vendor->class_name;
-            $importer = new $class($vendor);
-            $importer->import();
+            try {
+                $this->info('Starting to fetch products from ' . $vendor->name);
+                $class = "App\\Importer\\" . $vendor->class_name;
+                $importer = new $class($vendor);
+                $importer->import();
+            } catch (\Exception $e) {
+                $this->error($e->getMessage());
+            }
         });
 
         Artisan::call(FlushCommand::class, ['model' => Product::class]);
