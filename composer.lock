@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "92e6382af76302004102ff86feba97b4",
+    "content-hash": "77e8734a0a2840ea221e4002820e0b27",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -938,49 +938,6 @@
                 }
             ],
             "time": "2020-05-31T07:30:16+00:00"
-        },
-        {
-            "name": "guratr/nova-command-runner",
-            "version": "1.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guratr/nova-command-runner.git",
-                "reference": "289ae0cd43f7d4c15191cbab0322b56076e03403"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guratr/nova-command-runner/zipball/289ae0cd43f7d4c15191cbab0322b56076e03403",
-                "reference": "289ae0cd43f7d4c15191cbab0322b56076e03403",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Guratr\\CommandRunner\\ToolServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Guratr\\CommandRunner\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Laravel Nova tool for running Artisan commands.",
-            "keywords": [
-                "artisan",
-                "commands",
-                "laravel",
-                "nova"
-            ],
-            "time": "2019-01-07T23:51:01+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",

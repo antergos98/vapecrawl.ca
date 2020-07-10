@@ -4,9 +4,7 @@ namespace App\Providers;
 
 use App\Nova\Metrics\ProductsCount;
 use App\Nova\Metrics\VendorsCount;
-use Guratr\CommandRunner\CommandRunner;
 use Illuminate\Support\Facades\Gate;
-use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 
@@ -81,9 +79,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function tools()
     {
-        return [
-            new CommandRunner,
-        ];
+        return [];
     }
 
     /**
