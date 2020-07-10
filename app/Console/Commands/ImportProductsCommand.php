@@ -7,6 +7,7 @@ use App\Vendor;
 use Illuminate\Console\Command;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Log;
 use Laravel\Scout\Console\FlushCommand;
 use Laravel\Scout\Console\ImportCommand;
 
@@ -54,13 +55,15 @@ class ImportProductsCommand extends Command
                 $importer = new $class($vendor);
                 $importer->import();
             } catch (\Exception $e) {
+                @unlink(storage_path('import.txt'));
                 $this->error($e->getMessage());
+                Log::stack(['single', 'larabug'])->error($e->getMessage());
             }
         });
 
         Artisan::call(FlushCommand::class, ['model' => Product::class]);
         Artisan::call(ImportCommand::class, ['model' => Product::class]);
-        
+
         @unlink(storage_path('import.txt'));
     }
 }

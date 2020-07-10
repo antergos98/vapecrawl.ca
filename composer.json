@@ -11,9 +11,11 @@
         "php": "^7.2.5",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
+        "guratr/nova-command-runner": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
         "larabug/larabug": "^2.1",
         "laravel/framework": "^7.0",
+        "laravel/nova": "*",
         "laravel/scout": "^8.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
@@ -27,6 +29,12 @@
         "nunomaduro/collision": "^4.1",
         "phpunit/phpunit": "^8.5"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./nova"
+        }
+    ],
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",

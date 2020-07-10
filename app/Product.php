@@ -9,6 +9,8 @@ class Product extends Model
 {
     use Searchable;
 
+    public $timestamps = false;
+
     public function vendor()
     {
         return $this->belongsTo(Vendor::class);
