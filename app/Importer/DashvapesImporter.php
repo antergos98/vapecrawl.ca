@@ -8,11 +8,7 @@ use Illuminate\Support\Facades\Http;
 
 class DashvapesImporter implements ImporterInterface
 {
-
-    /**
-     * @var Vendor
-     */
-    private $vendor;
+    private Vendor $vendor;
 
     public function __construct(Vendor $vendor)
     {
@@ -24,16 +20,16 @@ class DashvapesImporter implements ImporterInterface
         $products = Http::get('https://dashvapes.com/tools/search.php?key=' . config('vendors.dashvapes.key'))->json();
 
         $data = collect($products)
-            ->map(function($product) {
+            ->map(function ($product) {
                 $parts = explode('/', $product['image']);
                 $realId = $parts[count($parts) - 2];
                 return [
                     'name' => $product['name'] . ' - ' . $product['brand'],
-                    'price' => (int) ((float)$product['price'] * 100),
+                    'price' => (int)((float)$product['price'] * 100),
                     'image' => $product['image'],
                     'in_stock' => $product['availability'] === "In Stock",
                     'url' => $product['url'],
-                    'real_id' => (int) $realId,
+                    'real_id' => (int)$realId,
                     'vendor_id' => $this->vendor->id
                 ];
             });
