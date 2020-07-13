@@ -8,11 +8,7 @@ use Illuminate\Support\Facades\Http;
 
 class ShopifyImporter implements ImporterInterface
 {
-
-    /**
-     * @var Vendor
-     */
-    private $vendor;
+    private Vendor $vendor;
 
     public function __construct(Vendor $vendor)
     {
@@ -32,7 +28,7 @@ class ShopifyImporter implements ImporterInterface
                 break;
             }
 
-            foreach($results['products'] as $result) {
+            foreach ($results['products'] as $result) {
                 $normalized = $this->getNormalizedResult($result);
                 if ($normalized['price'] && $normalized['image']) {
                     $products[] = $normalized;
@@ -45,14 +41,15 @@ class ShopifyImporter implements ImporterInterface
         Product::insert($products);
     }
 
-    protected function getNormalizedResult(array $result): array {
+    protected function getNormalizedResult(array $result): array
+    {
         return [
             'name' => $result['title'],
-            'price' => isset($result['variants'][0]['price']) ? (int) ((float) $result['variants'][0]['price'] * 100) : 0,
+            'price' => isset($result['variants'][0]['price']) ? (int)((float)$result['variants'][0]['price'] * 100) : 0,
             'image' => $result['images'][0]['src'] ?? null,
             'in_stock' => $result['variants'][0]['available'] ?? false,
             'url' => $this->vendor->url . 'products/' . $result['handle'],
-            'real_id' => (int) $result['id'],
+            'real_id' => (int)$result['id'],
             'vendor_id' => $this->vendor->id
         ];
     }

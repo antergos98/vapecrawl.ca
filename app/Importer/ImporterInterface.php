@@ -1,10 +1,6 @@
 <?php
 
-
 namespace App\Importer;
-
-
-use App\Vendor;
 
 interface ImporterInterface
 {
