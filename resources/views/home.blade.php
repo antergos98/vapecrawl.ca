@@ -5,7 +5,7 @@
         <div class="mb-6">
             <h1 class="text-2xl mb-6 md:text-3xl">Welcome on Vapecrawl</h1>
             <p>
-                Vapecrawl is a simple search engine that let you search through our database of 17 000+ products sold by
+                Vapecrawl is a simple search engine that let you search through our database of 21 000+ products sold by
                 several Canadian vendors. Vapecrawl is an attempt to scratch my own itch, but I thought it would
                 be great to share it with everyone. <br><br> We know it can be a pain in the ass to spend hours on Google to find
                 who
