@@ -15,7 +15,7 @@ require('laravel-mix-purgecss');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
-    .extract(['vue', 'vuex', 'axios', 'vue-lazyload'])
+    .extract(['vue', 'vuex', 'axios', 'vue-lazyload', 'vue-flip-toolkit', 'vue-multiselect'])
     .options({
         processCssUrls: false,
         postCss: [tailwindcss('./tailwind.config.js')],

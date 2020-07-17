@@ -1,5 +1,21 @@
 <template>
     <div>
+        <div v-show="searchFailed" class="bg-gray-800 p-4 rounded mb-3">
+            <div class="flex items-center">
+                <div class="mr-3">
+                    <svg class="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 5h2v6H9V5zm0 8h2v2H9v-2z"/></svg>
+                </div>
+                <div>
+                    Something went wrong with your search. Please try to refresh the page.
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <form action="/search" method="GET" @submit.prevent="onSubmit">
+                <input type="text" class="w-full p-3 rounded outline-none text-gray-900"
+                       placeholder="Search for products..." v-model="searchTerm" required autofocus>
+            </form>
+        </div>
         <filters></filters>
         <Flipper :flip-key="flipKey" class="flex flex-wrap -mx-3">
             <div v-for="item in $store.getters.filteredResults" :key="item.id" class="w-full md:w-1/2 px-3 mb-6">
@@ -42,12 +58,41 @@
 <script>
     import Filters from './Filters';
     import {Flipper, Flipped} from 'vue-flip-toolkit';
+    import EventBus from '../event-bus';
+
     export default {
         components: { Filters, Flipped, Flipper },
         name: 'results',
-        props: ['items'],
+        props: ['items', 'q'],
+        data () {
+            return {
+                searchTerm: '',
+                searchFailed: false
+            }
+        },
         mounted() {
             this.$store.commit('set_results', this.items);
+            if (this.q) {
+                this.searchTerm = this.q;
+            }
+        },
+        methods: {
+            onSubmit () {
+                axios.get('/search?q=' + this.searchTerm)
+                .then(response => {
+                    EventBus.$emit('searched');
+                    this.searchFailed = false;
+                    this.$store.commit('set_results', response.data.results);
+                    document.title = this.searchTerm + ' - Vapecrawl';
+                    window.history.pushState({q: this.searchTerm}, '', '/search?q=' + this.searchTerm);
+                })
+                .catch(() => {
+                    this.$store.commit('set_results', []);
+                    this.$store.commit('set_filters', null);
+                    this.$store.commit('set_sort', null);
+                    this.searchFailed = true;
+                })
+            }
         },
         computed: {
             flipKey () {
