@@ -81,6 +81,7 @@
                 axios.get('/search?q=' + this.searchTerm)
                 .then(response => {
                     EventBus.$emit('searched');
+                    document.activeElement.blur();
                     this.searchFailed = false;
                     this.$store.commit('set_results', response.data.results);
                     document.title = this.searchTerm + ' - Vapecrawl';
