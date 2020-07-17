@@ -16,7 +16,7 @@
                        placeholder="Search for products..." name="q" autofocus>
             </div>
             <div class="text-right">
-                <input type="submit" value="Search" class="bg-gray-800 py-3 px-12 rounded hover:bg-gray-700">
+                <input type="submit" value="Search" class="bg-gray-800 py-3 px-12 rounded hover:bg-gray-700 focus:outline-none">
             </div>
         </form>
     </div>
