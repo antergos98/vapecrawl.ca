@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('page_title', 'Contact us')
+
 @section('content')
     <div>
         <div class="mb-6">

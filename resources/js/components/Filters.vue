@@ -35,6 +35,7 @@
     import _map from 'lodash/map';
     import _isEmpty from 'lodash/isEmpty';
     import Multiselect from 'vue-multiselect';
+    import EventBus from '../event-bus';
 
     export default {
         name: 'filters',
@@ -52,6 +53,12 @@
                 {label: 'Out of Stock', key: 'in_stock', value: false}
             ]
         }),
+        mounted() {
+            EventBus.$on('searched', () => {
+                this.vendors = [];
+                this.onFilterChange();
+            });
+        },
         methods: {
             onSortChange(value) {
                 this.$store.commit('set_sort', value ? {key: value.key, direction: value.direction} : null);
