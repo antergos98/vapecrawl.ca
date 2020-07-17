@@ -12,8 +12,19 @@
         </div>
         <div class="mb-3">
             <form action="/search" method="GET" @submit.prevent="onSubmit">
-                <input type="text" class="w-full p-3 rounded outline-none text-gray-900"
-                       placeholder="Search for products..." v-model="searchTerm" required autofocus>
+                <div class="flex flex-wrap -mx-3">
+                    <div class="w-full sm:w-5/6 mb-3 sm:mb-0">
+                        <div class="px-3">
+                            <input type="text" class="w-full p-3 rounded outline-none text-gray-900"
+                                   placeholder="Search for products..." v-model="searchTerm" required autofocus>
+                        </div>
+                    </div>
+                    <div class="w-full sm:w-1/6">
+                        <div class="px-3">
+                            <button type="submit" class="bg-gray-800 py-3 rounded w-full">Search</button>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
         <filters></filters>
