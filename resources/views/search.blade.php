@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('page_title', request('q') ?? 'Search')
+
 @section('content')
     <div class="mb-3">
         <form action="/search" method="GET">
