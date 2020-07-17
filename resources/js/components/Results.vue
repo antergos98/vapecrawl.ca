@@ -21,7 +21,7 @@
                     </div>
                     <div class="w-full sm:w-1/6">
                         <div class="px-3">
-                            <button type="submit" class="bg-gray-800 py-3 rounded w-full">Search</button>
+                            <button type="submit" class="bg-gray-800 py-3 rounded w-full hover:bg-gray-700">Search</button>
                         </div>
                     </div>
                 </div>
