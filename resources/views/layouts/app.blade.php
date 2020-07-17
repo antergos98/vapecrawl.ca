@@ -10,7 +10,7 @@
     <title>@yield('page_title') - Vapecrawl</title>
 
     <meta name="description"
-          content="Vapecrawl is search engine where you can quickly find vendors that have the cheapest vape products you are looking for.">
+          content="Vapecrawl is search engine where you can quickly find Canadian vendors that have the cheapest vape products you are looking for.">
 
     @includeWhen(app()->environment('production'), 'shared._analytics')
 
