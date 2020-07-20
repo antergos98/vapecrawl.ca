@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use App\Product;
 use App\Vendor;
 use Illuminate\Console\Command;
-use Illuminate\Http\File;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Log;
 use Laravel\Scout\Console\FlushCommand;

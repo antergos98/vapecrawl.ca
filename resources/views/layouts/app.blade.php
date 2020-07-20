@@ -10,7 +10,7 @@
     <title>@yield('page_title') - Vapecrawl</title>
 
     <meta name="description"
-          content="Vapecrawl is search engine where you can quickly find vendors that have the cheapest vape products you are looking for.">
+          content="Vapecrawl is search engine where you can quickly find Canadian vendors that have the cheapest vape products you are looking for.">
 
     @includeWhen(app()->environment('production'), 'shared._analytics')
 
@@ -20,6 +20,10 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
+    <link rel="icon"
+          type="image/png"
+          href="{{ asset('favicon.png') }}">
 </head>
 <body class="bg-gray-900 text-white font-nunito">
 @include('shared._import_alert')
@@ -40,7 +44,7 @@
                 </div>
             </div>
         </nav>
-        <main>
+        <main class="mb-8">
             <div class="max-w-6xl mx-auto px-6 xl:px-0">
                 @yield('content')
             </div>

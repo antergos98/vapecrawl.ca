@@ -21,7 +21,7 @@ class ShopifyImporter implements ImporterInterface
         $products = [];
 
         while (true) {
-            $apiUrl = $this->vendor->url . 'products.json?page=' . $page . '&limit=250';
+            $apiUrl = $this->vendor->url . 'products.json?page=' . $page . '&limit=100';
             $results = Http::get($apiUrl)->json();
 
             if (count($results['products']) === 0) {
@@ -38,7 +38,7 @@ class ShopifyImporter implements ImporterInterface
             $page++;
         }
 
-        Product::insert($products);
+        collect($products)->chunk(100)->each(fn($products) => Product::insert($products->all()));
     }
 
     protected function getNormalizedResult(array $result): array

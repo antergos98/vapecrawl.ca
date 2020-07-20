@@ -34,6 +34,6 @@ class DashvapesImporter implements ImporterInterface
                 ];
             });
 
-        Product::insert($data->all());
+        $data->chunk(100)->each(fn($products) => Product::insert($products->all()));
     }
 }
