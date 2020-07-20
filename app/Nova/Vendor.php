@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\DeleteProducts;
 use App\Nova\Actions\ImportProducts;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
@@ -102,7 +103,8 @@ class Vendor extends Resource
     public function actions(Request $request)
     {
         return [
-            ImportProducts::make()
+            ImportProducts::make(),
+            DeleteProducts::make()
         ];
     }
 }
