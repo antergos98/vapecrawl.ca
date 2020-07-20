@@ -12,7 +12,8 @@
 
         <div class="w-full md:w-1/3 lg:w-1/4 mb-3 lg:mb-0">
             <div class="px-3">
-                <multiselect placeholder="Filter by availability ..." :options="filterByAvailabilityOptions" :show-labels="false" :show-pointer="false"
+                <multiselect placeholder="Filter by availability ..." :options="filterByAvailabilityOptions"
+                             :show-labels="false" :show-pointer="false"
                              label="label"
                              track-by="label"
                              v-model="availability" @input="onFilterChange"></multiselect>
@@ -21,7 +22,8 @@
 
         <div class="w-full md:w-1/3 lg:w-1/2 mb-3 lg:mb-0">
             <div class="px-3">
-                <multiselect placeholder="Filter by vendors..." multiple :options="filterByVendorsOptions" :show-labels="false" :show-pointer="false"
+                <multiselect placeholder="Filter by vendors..." multiple :options="filterByVendorsOptions"
+                             :show-labels="false" :show-pointer="false"
                              label="label"
                              track-by="value"
                              v-model="vendors" @input="onFilterChange"></multiselect>

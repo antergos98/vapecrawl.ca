@@ -44,7 +44,7 @@
                 </div>
             </div>
         </nav>
-        <main>
+        <main class="mb-8">
             <div class="max-w-6xl mx-auto px-6 xl:px-0">
                 @yield('content')
             </div>
