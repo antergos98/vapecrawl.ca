@@ -20,6 +20,10 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
+    <link rel="icon"
+          type="ima ge/png"
+          href="{{ asset('favicon.png') }}">
 </head>
 <body class="bg-gray-900 text-white font-nunito">
 @include('shared._import_alert')
