@@ -22,7 +22,7 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
     <link rel="icon"
-          type="ima ge/png"
+          type="image/png"
           href="{{ asset('favicon.png') }}">
 </head>
 <body class="bg-gray-900 text-white font-nunito">
