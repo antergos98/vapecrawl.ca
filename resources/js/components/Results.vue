@@ -102,6 +102,7 @@
         },
         methods: {
             onSubmit() {
+                let loader = this.$loading.show();
                 axios.get('/search?q=' + this.searchTerm)
                     .then(response => {
                         EventBus.$emit('searched');
