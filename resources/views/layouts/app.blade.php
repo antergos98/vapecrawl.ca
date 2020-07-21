@@ -7,10 +7,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('page_title') - Vapecrawl</title>
+    <title>@yield('page_title') - Vapecrawl.ca</title>
 
     <meta name="description"
-          content="Vapecrawl is search engine where you can quickly find Canadian vendors that have the cheapest vape products you are looking for.">
+          content="Vapecrawl.ca is search engine where you can quickly find Canadian vendors that have the cheapest vape products you are looking for.">
 
     @includeWhen(app()->environment('production'), 'shared._analytics')
 
@@ -39,13 +39,14 @@
                         <ul class="flex font-bold space-x-6">
                             <li><a href="/">Home</a></li>
                             <li><a href="/contact">Contact us</a></li>
+                            <li><a href="/vendors">Vendors</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </nav>
         <main class="mb-8">
-            <div class="max-w-6xl mx-auto px-6 xl:px-0">
+            <div class="max-w-6xl mx-auto px-6 xl:px-0 mb-6">
                 @yield('content')
             </div>
         </main>
