@@ -4,7 +4,6 @@ import VueLazyload from "vue-lazyload";
 import store from './store';
 import axios from 'axios';
 import Loading from 'vue-loading-overlay';
-import 'vue-loading-overlay/dist/vue-loading.css';
 
 window.axios = axios;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
