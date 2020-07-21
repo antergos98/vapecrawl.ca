@@ -21,7 +21,7 @@
     </div>
     <h2 class="text-xl mb-6 md:text-2xl">Your name is not on the list?</h2>
     <p>
-        Is your name or your favorite vendor is missing from the list?
+        Is your name or your favorite vendor missing from the list?
         <a class="underline" href="mailto:info@vapecrawl.ca">Send us an email!</a>
     </p>
 @endsection
