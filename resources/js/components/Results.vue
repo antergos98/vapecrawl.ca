@@ -128,3 +128,9 @@
         }
     }
 </script>
+
+<style>
+    /* purgecss start ignore */
+    @import "~vue-loading-overlay/dist/vue-loading.css";
+    /* purgecss end ignore */
+</style>
