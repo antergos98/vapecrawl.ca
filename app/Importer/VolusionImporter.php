@@ -5,7 +5,6 @@ namespace App\Importer;
 use App\Product;
 use App\Vendor;
 use Goutte\Client;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -25,19 +24,18 @@ class VolusionImporter implements ImporterInterface
     {
         $page = 1;
 
-        try {
-            while (true) {
-                $url = $this->vendor->url . "productslist.asp?show=60&page=$page";
-                $crawler = $this->client->request('GET', $url);
+        while (true) {
+            $url = $this->vendor->url . "productslist.asp?show=60&page=$page";
+            $crawler = $this->client->request('GET', $url);
 
-                if ($crawler->filter('.v-product-grid')->count() <= 0) {
-                    dump('ON BREAK', $url);
-                    break;
-                }
+            if ($crawler->filter('.v-product-grid')->count() <= 0) {
+                break;
+            }
 
-                $crawler->filter('.v-product-grid .v-product')->each(function(Crawler $crawler) {
-                    $link = $crawler->filter('.v-product__title')->attr('href');
-                    $page = $this->client->request('GET', $link);
+            $crawler->filter('.v-product-grid .v-product')->each(function(Crawler $crawler) {
+                $link = $crawler->filter('.v-product__title')->attr('href');
+                $page = $this->client->request('GET', $link);
+                if ($this->client->getResponse()->getStatusCode() !== 404) {
                     $name = $page->filter("span[itemprop='name']")->text();
                     $price = $page->filter("span[itemprop='price']")->attr('content');
                     $price = (float)$price;
@@ -63,18 +61,12 @@ class VolusionImporter implements ImporterInterface
                     ];
 
                     $this->client->back();
-                });
+                }
+            });
 
-                $page++;
-                Product::insert($this->products);
-                $this->products = [];
-            }
-        } catch (\Exception $e) {
-            Log::error($e->getFile());
-            Log::error($e->getLine());
-            Log::error($e->getTrace());
-            Log::error($e->getTraceAsString());
-            dd('dasd');
+            $page++;
+            Product::insert($this->products);
+            $this->products = [];
         }
 
     }

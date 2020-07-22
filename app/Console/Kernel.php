@@ -19,12 +19,15 @@ class Kernel extends ConsoleKernel
     /**
      * Define the application's command schedule.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @param \Illuminate\Console\Scheduling\Schedule $schedule
      * @return void
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('import:products')->daily()->thenPing('https://hc-ping.com/f22b2536-7af1-4ac9-82ad-d998e2eabfb5');
+        $schedule->command('import:products')
+            ->timezone('America/Toronto')
+            ->daily()
+            ->thenPing('https://hc-ping.com/f22b2536-7af1-4ac9-82ad-d998e2eabfb5');
     }
 
     /**
@@ -34,7 +37,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }
