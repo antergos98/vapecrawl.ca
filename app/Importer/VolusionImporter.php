@@ -5,6 +5,7 @@ namespace App\Importer;
 use App\Product;
 use App\Vendor;
 use Goutte\Client;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -24,48 +25,58 @@ class VolusionImporter implements ImporterInterface
     {
         $page = 1;
 
-        while (true) {
-            $url = $this->vendor->url . "productslist.asp?show=60&page=$page";
-            $crawler = $this->client->request('GET', $url);
+        try {
+            while (true) {
+                $url = $this->vendor->url . "productslist.asp?show=60&page=$page";
+                $crawler = $this->client->request('GET', $url);
 
-            if ($crawler->filter('.v-product-grid')->count() <= 0) {
-                break;
-            }
-
-            $crawler->filter('.v-product-grid .v-product')->each(function(Crawler $crawler) {
-                $link = $crawler->filter('.v-product__title')->attr('href');
-                $page = $this->client->request('GET', $link);
-                $name = $page->filter("span[itemprop='name']")->text();
-                $price = $page->filter("span[itemprop='price']")->attr('content');
-                $price = (float)$price;
-                $price = $price * 100;
-
-                $image = $page->filter('img#product_photo')->attr('src');
-
-                if (! Str::of($image)->lower()->contains($this->vendor->url)) {
-                    $image = $this->vendor->url . $image;
+                if ($crawler->filter('.v-product-grid')->count() <= 0) {
+                    dump('ON BREAK', $url);
+                    break;
                 }
 
-                $meta = $page->filter("meta[itemprop='availability']");
-                $in_stock = $this->isAvailable($meta);
+                $crawler->filter('.v-product-grid .v-product')->each(function(Crawler $crawler) {
+                    $link = $crawler->filter('.v-product__title')->attr('href');
+                    $page = $this->client->request('GET', $link);
+                    $name = $page->filter("span[itemprop='name']")->text();
+                    $price = $page->filter("span[itemprop='price']")->attr('content');
+                    $price = (float)$price;
+                    $price = $price * 100;
 
-                $this->products[] = [
-                    'name' => $name,
-                    'price' => $price,
-                    'image' => $image,
-                    'in_stock' => $in_stock,
-                    'url' => $link,
-                    'real_id' => 1,
-                    'vendor_id' => $this->vendor->id
-                ];
+                    $image = $page->filter('img#product_photo')->attr('src');
 
-                $this->client->back();
-            });
+                    if (! Str::of($image)->lower()->contains($this->vendor->url)) {
+                        $image = $this->vendor->url . $image;
+                    }
 
-            $page++;
-            Product::insert($this->products);
-            $this->products = [];
+                    $meta = $page->filter("meta[itemprop='availability']");
+                    $in_stock = $this->isAvailable($meta);
+
+                    $this->products[] = [
+                        'name' => $name,
+                        'price' => $price,
+                        'image' => $image,
+                        'in_stock' => $in_stock,
+                        'url' => $link,
+                        'real_id' => 1,
+                        'vendor_id' => $this->vendor->id
+                    ];
+
+                    $this->client->back();
+                });
+
+                $page++;
+                Product::insert($this->products);
+                $this->products = [];
+            }
+        } catch (\Exception $e) {
+            Log::error($e->getFile());
+            Log::error($e->getLine());
+            Log::error($e->getTrace());
+            Log::error($e->getTraceAsString());
+            dd('dasd');
         }
+
     }
 
     private function isAvailable(Crawler $meta): bool
