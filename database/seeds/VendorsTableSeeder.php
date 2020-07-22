@@ -32,5 +32,7 @@ class VendorsTableSeeder extends Seeder
         (new Vendor(['name' => 'River City Vapes', 'url' => 'https://www.rivercityvapes.com/', 'class_name' => 'ShopifyImporter']))->save();
         (new Vendor(['name' => 'True North Vapor', 'url' => 'https://www.truenorthvapor.com/', 'class_name' => 'ShopifyImporter']))->save();
         (new Vendor(['name' => 'The Village Vaporette', 'url' => 'https://www.thevillagevaporette.com/', 'class_name' => 'ShopifyImporter']))->save();
+        (new Vendor(['name' => 'VapeMeet', 'url' => 'https://vapemeet.ca/', 'class_name' => 'ShopifyImporter']))->save();
+        (new Vendor(['name' => 'Steeped Monkey Brains', 'url' => 'https://steepedmonkeybrains.com/', 'class_name' => 'ShopifyImporter']))->save();
     }
 }
