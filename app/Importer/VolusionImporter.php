@@ -35,37 +35,40 @@ class VolusionImporter implements ImporterInterface
             $crawler->filter('.v-product-grid .v-product')->each(function(Crawler $crawler) {
                 $link = $crawler->filter('.v-product__title')->attr('href');
                 $page = $this->client->request('GET', $link);
-                $name = $page->filter("span[itemprop='name']")->text();
-                $price = $page->filter("span[itemprop='price']")->attr('content');
-                $price = (float)$price;
-                $price = $price * 100;
+                if ($this->client->getResponse()->getStatusCode() !== 404) {
+                    $name = $page->filter("span[itemprop='name']")->text();
+                    $price = $page->filter("span[itemprop='price']")->attr('content');
+                    $price = (float)$price;
+                    $price = $price * 100;
 
-                $image = $page->filter('img#product_photo')->attr('src');
+                    $image = $page->filter('img#product_photo')->attr('src');
 
-                if (! Str::of($image)->lower()->contains($this->vendor->url)) {
-                    $image = $this->vendor->url . $image;
+                    if (! Str::of($image)->lower()->contains($this->vendor->url)) {
+                        $image = $this->vendor->url . $image;
+                    }
+
+                    $meta = $page->filter("meta[itemprop='availability']");
+                    $in_stock = $this->isAvailable($meta);
+
+                    $this->products[] = [
+                        'name' => $name,
+                        'price' => $price,
+                        'image' => $image,
+                        'in_stock' => $in_stock,
+                        'url' => $link,
+                        'real_id' => 1,
+                        'vendor_id' => $this->vendor->id
+                    ];
+
+                    $this->client->back();
                 }
-
-                $meta = $page->filter("meta[itemprop='availability']");
-                $in_stock = $this->isAvailable($meta);
-
-                $this->products[] = [
-                    'name' => $name,
-                    'price' => $price,
-                    'image' => $image,
-                    'in_stock' => $in_stock,
-                    'url' => $link,
-                    'real_id' => 1,
-                    'vendor_id' => $this->vendor->id
-                ];
-
-                $this->client->back();
             });
 
             $page++;
             Product::insert($this->products);
             $this->products = [];
         }
+
     }
 
     private function isAvailable(Crawler $meta): bool
