@@ -8,6 +8,6 @@ class VendorsController
 {
     public function __invoke()
     {
-        return view('vendors', ['vendors' => Vendor::select(['name', 'url'])->get()->shuffle()->all()]);
+        return view('vendors', ['vendors' => Vendor::select(['name', 'url'])->inRandomOrder()->get()]);
     }
 }
