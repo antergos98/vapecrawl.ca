@@ -37,9 +37,9 @@
                     </div>
                     <div>
                         <ul class="flex font-bold space-x-6">
-                            <li><a href="/search">Search</a></li>
-                            <li><a href="/contact">Contact us</a></li>
-                            <li><a href="/vendors">Vendors</a></li>
+                            <li><a class="hover:underline" href="/search">Search</a></li>
+                            <li><a class="hover:underline" href="/contact">Contact us</a></li>
+                            <li><a class="hover:underline" href="/vendors">Vendors</a></li>
                         </ul>
                     </div>
                 </div>
