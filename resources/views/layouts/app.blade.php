@@ -12,7 +12,9 @@
     <meta name="description"
           content="Vapecrawl.ca is search engine where you can quickly find Canadian vendors that have the cheapest vape products you are looking for.">
 
-    @includeWhen(app()->environment('production'), 'shared._analytics')
+    @production
+        @include('shared._analytics')
+    @endproduction
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -20,6 +22,7 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    @livewireStyles
 
     <link rel="icon"
           type="image/png"
@@ -27,7 +30,7 @@
 </head>
 <body class="bg-gray-900 text-white font-nunito">
 @include('shared._import_alert')
-<div id="app" class="flex flex-col min-h-screen justify-between">
+<div class="flex flex-col min-h-screen justify-between">
     <div>
         <nav class="mt-6 mb-12 md:mb-24">
             <div class="max-w-6xl mx-auto px-6 xl:px-0">
@@ -54,6 +57,7 @@
     <age-validation-modal></age-validation-modal>
     @include('shared._footer')
 </div>
+@livewireScripts
 <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

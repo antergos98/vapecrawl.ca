@@ -3,5 +3,6 @@
 @section('page_title', request('q') ?? 'Search')
 
 @section('content')
-    <results :items="{{ json_encode($results) }}" q="{{ request('q') }}"></results>
+    {{-- <results :items="{{ json_encode($results) }}" q="{{ request('q') }}"></results> --}}
+    <livewire:search/>
 @endsection
