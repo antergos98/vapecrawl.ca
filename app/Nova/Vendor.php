@@ -7,6 +7,7 @@ use App\Nova\Actions\ImportProducts;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Boolean;
 
 class Vendor extends Resource
 {
@@ -52,6 +53,7 @@ class Vendor extends Resource
                 ->help('Don\'t forget the \'/\' at the end')
                 ->creationRules('unique:vendors,url')
                 ->updateRules('unique:vendors,url,{{resourceId}}'),
+            Boolean::make('Enabled'),
             Text::make('Products', fn ($vendor) => $vendor->products()->count())
                 ->onlyOnIndex(),
             Text::make('Class Name')
