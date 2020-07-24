@@ -47,7 +47,7 @@ class ImportProductsCommand extends Command
 
         Product::truncate();
 
-        Vendor::limit(2)->get()->each(function(Vendor $vendor) {
+        Vendor::enabled()->get()->each(function(Vendor $vendor) {
             try {
                 $this->info('Starting to fetch products from ' . $vendor->name);
                 $class = "App\\Importer\\" . $vendor->class_name;
