@@ -12,13 +12,13 @@
             </p>
         </div>
         <div>
-            <h2 class="text-xl mb-6 md:text-2xl">Why some vendors are not indexed on Vapecrawl?</h2>
+            <h2 class="text-xl mb-6 md:text-2xl">Why some vendors are not listed on Vapecrawl?</h2>
             <p>
                 We haven't indexed all Canadian vendors because we don't know each of them yet. We already have a list of vendors to include very soon. Some of them requires to write extra code so it might take some time.
             </p>
         </div>
         <div>
-            <h2 class="text-xl mb-6 md:text-2xl">I own a vape shop and would like to get indexed</h2>
+            <h2 class="text-xl mb-6 md:text-2xl">I own a vape shop and would like to get listed</h2>
             <p>
                 It's totally possible! Send us an email with your website URL and we'll check this out with you!
             </p>
