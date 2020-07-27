@@ -35,6 +35,7 @@ class Search extends Component
             ->load('vendor');
 
         $this->emit('fetch:completed', $this->q);
+
         $this->lastSearch = $this->q;
 	}
 
