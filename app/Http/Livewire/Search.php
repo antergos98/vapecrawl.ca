@@ -9,6 +9,7 @@ class Search extends Component
 {
 	public $q = '';
     public $products = [];
+    public $lastSearch = '';
 
     public function mount()
     {
@@ -21,11 +22,20 @@ class Search extends Component
 
 	public function searchProducts()
     {
+        if (is_null($this->q) || $this->q === "") {
+            return;
+        }
+
+        if ($this->q === $this->lastSearch) {
+            return;
+        }
+
         $this->products = Product::search($this->q)
             ->get()
             ->load('vendor');
 
         $this->emit('fetch:completed', $this->q);
+        $this->lastSearch = $this->q;
 	}
 
 	public function render()
