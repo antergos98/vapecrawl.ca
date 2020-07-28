@@ -35,16 +35,9 @@ class Search extends Component
             ->get()
             ->load('vendor');
 
-        $this->applyFilters();
-
         $this->emit('fetch:completed', $this->q);
 
         $this->lastSearch = $this->q;
-	}
-
-    public function applyFilters()
-    {
-//        dump($this->sort);
 	}
 
 	public function render()
