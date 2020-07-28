@@ -19,24 +19,24 @@
         </form>
     </div>
 
-    <div class="grid grid-cols-3 gap-3 text-gray-900 mb-3">
-        <div>
-            <select id="js-sort-by">
+    <div class="grid grid-cols-8 gap-6 text-gray-900 mb-3">
+        <div class="col-span-2">
+            <select wire:model="sort" class="border-0" id="js-sort-by">
                 <option value="relevant">Most relevant</option>
                 <option value="asc">Price (low to high)</option>
                 <option value="desc">Price (high to low)</option>
             </select>
         </div>
-        <div>
+        <div class="col-span-2">
             <select id="js-filter-availability">
                 <option value="1">In Stock</option>
                 <option value="0">Out of Stock</option>
             </select>
         </div>
-        <div>
-            <select id="js-filter-vendors">
-                @foreach($products->pluck('vendor.id') as $vendor)
-                    <option value="{{ $vendor->id }}">{{ $vendor->name }}</option>
+        <div class="col-span-4">
+            <select multiple id="js-filter-vendors">
+                @foreach($products->pluck('vendor.name', 'vendor.id')->unique() as $k=>$v)
+                    <option value="{{ $k }}">{{ $v }}</option>
                 @endforeach
             </select>
         </div>
@@ -67,6 +67,8 @@
         new Choices('#js-filter-availability', {
             searchEnabled: false
         });
-        new Choices('#js-filter-vendors');
+        new Choices('#js-filter-vendors', {
+            removeItemButton: true
+        });
     </script>
 @endpush

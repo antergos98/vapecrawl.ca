@@ -17,13 +17,12 @@
 
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
     />
     <livewire:styles/>
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
     <link rel="icon"
           type="image/png"

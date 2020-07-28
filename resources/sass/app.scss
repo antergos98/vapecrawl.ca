@@ -6,3 +6,17 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.choices__inner {
+    border: none;
+}
+
+.choices__list--multiple .choices__item, .choices__list--multiple .choices__item.is-highlighted {
+    background-color: #1a202c;
+    border: none;
+}
+
+.choices[data-type*=select-multiple] .choices__button, .choices[data-type*=text] .choices__button {
+    border-left: none;
+    padding-left: 20px;
+}
