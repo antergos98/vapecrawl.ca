@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('page_title') - Vapecrawl.ca</title>
@@ -16,13 +15,15 @@
         @include('shared._analytics')
     @endproduction
 
-    <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    @livewireStyles
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
+    />
+    <livewire:styles/>
 
     <link rel="icon"
           type="image/png"
@@ -32,7 +33,7 @@
 @include('shared._import_alert')
 <div class="flex flex-col min-h-screen justify-between">
     <div>
-       @include('shared._header')
+        @include('shared._header')
         <main class="mb-8">
             <div class="max-w-6xl mx-auto px-6 xl:px-0 mb-6">
                 @yield('content')
@@ -42,7 +43,9 @@
     <age-validation-modal></age-validation-modal>
     @include('shared._footer')
 </div>
-@livewireScripts
+<livewire:scripts/>
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.js"></script>
 <script src="{{ mix('js/app.js') }}"></script>
+@stack('scripts')
 </body>
 </html>
