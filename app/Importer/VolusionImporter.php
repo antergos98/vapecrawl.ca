@@ -25,25 +25,27 @@ class VolusionImporter implements ImporterInterface
         $page = 1;
 
         while (true) {
-            $url = $this->vendor->url . "productslist.asp?show=60&page=$page";
+            $url = $this->vendor->url . "pindex.asp?Page=$page";
             $crawler = $this->client->request('GET', $url);
 
-            if ($crawler->filter('.v-product-grid')->count() <= 0) {
+            if ($crawler->filter('#content_area table')->eq('2')->filter('tr')->count() <= 0) {
                 break;
             }
 
-            $crawler->filter('.v-product-grid .v-product')->each(function(Crawler $crawler) {
-                $link = $crawler->filter('.v-product__title')->attr('href');
-                $page = $this->client->request('GET', $link);
+            $crawler->filter('#content_area table')->eq('2')->filter('tr')->each(function (Crawler $crawler) {
+                $product_url = $crawler->filter('td')->eq(2)->filter('a')->attr('href');
+
+                $page = $this->client->request('GET', $product_url);
+
                 if ($this->client->getResponse()->getStatusCode() !== 404) {
                     $name = $page->filter("span[itemprop='name']")->text();
-                    $price = $page->filter("span[itemprop='price']")->attr('content');
+                    $price = $page->filter("span[itemprop='price']")->count() ? $page->filter("span[itemprop='price']")->attr('content') : 0;
                     $price = (float)$price;
                     $price = $price * 100;
 
                     $image = $page->filter('img#product_photo')->attr('src');
 
-                    if (! Str::of($image)->lower()->contains($this->vendor->url) && ! Str::of($image)->startsWith('//')) {
+                    if (!Str::of($image)->lower()->contains($this->vendor->url) && !Str::of($image)->startsWith('//')) {
                         $image = $this->vendor->url . $image;
                     }
 
@@ -55,7 +57,7 @@ class VolusionImporter implements ImporterInterface
                         'price' => $price,
                         'image' => $image,
                         'in_stock' => $in_stock,
-                        'url' => $link,
+                        'url' => $product_url,
                         'real_id' => 1,
                         'vendor_id' => $this->vendor->id
                     ];
