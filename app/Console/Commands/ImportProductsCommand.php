@@ -43,8 +43,6 @@ class ImportProductsCommand extends Command
      */
     public function handle()
     {
-        file_put_contents(storage_path('import.txt'), '');
-
         Product::truncate();
 
         Vendor::enabled()->get()->each(function(Vendor $vendor) {
@@ -54,7 +52,6 @@ class ImportProductsCommand extends Command
                 $importer = new $class($vendor);
                 $importer->import();
             } catch (\Exception $e) {
-                @unlink(storage_path('import.txt'));
                 $this->error($e->getMessage());
                 Log::stack(['single', 'larabug'])->error($e->getMessage());
             }
@@ -62,7 +59,5 @@ class ImportProductsCommand extends Command
 
         Artisan::call(FlushCommand::class, ['model' => Product::class]);
         Artisan::call(ImportCommand::class, ['model' => Product::class]);
-
-        @unlink(storage_path('import.txt'));
     }
 }

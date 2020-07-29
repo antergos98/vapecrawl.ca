@@ -21,8 +21,6 @@ class ImportProducts extends Action
      */
     public function handle(ActionFields $fields, Collection $models)
     {
-        file_put_contents(storage_path('import.txt'), '');
-
         $models->each(function(Vendor $vendor) {
             try {
                 $vendor->products()->delete();
@@ -31,12 +29,9 @@ class ImportProducts extends Action
                 $importer->import();
                 $vendor->products()->searchable();
             } catch (Exception $e) {
-                @unlink(storage_path('import.txt'));
                 Log::stack(['single', 'larabug'])->error($e->getMessage());
             }
         });
-
-        @unlink(storage_path('import.txt'));
     }
 
     /**

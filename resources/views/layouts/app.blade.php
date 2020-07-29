@@ -26,7 +26,6 @@
           href="{{ asset('favicon.png') }}">
 </head>
 <body class="bg-gray-900 text-white font-nunito">
-@include('shared._import_alert')
 <div id="app" class="flex flex-col min-h-screen justify-between">
     <div>
         <nav class="mt-6 mb-12 md:mb-24">

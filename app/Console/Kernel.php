@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('import:products')
             ->timezone('America/Toronto')
-            ->daily()
+            ->dailyAt('02:00')
             ->thenPing('https://hc-ping.com/f22b2536-7af1-4ac9-82ad-d998e2eabfb5');
     }
 
