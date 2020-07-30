@@ -1,5 +1,12 @@
+window.flip = new Flipping();
+
 window.livewire.on('fetch:completed', (q) => {
+    window.flip.flip();
     window.history.replaceState({q}, '', '?q=' + q);
+});
+
+window.livewire.on('filters:applied', (q) => {
+    window.flip.flip();
 });
 
 // import Vue from 'vue';

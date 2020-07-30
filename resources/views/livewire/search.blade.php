@@ -19,25 +19,25 @@
         </form>
     </div>
 
-    <div class="grid grid-cols-8 gap-6 text-gray-900 mb-3">
-        <div class="col-span-2">
-            <select wire:model="sort" class="border-0" id="js-sort-by">
-                <option value="relevant">Most relevant</option>
+    <div class="grid grid-cols-2 gap-6 text-gray-900 mb-3">
+        <div wire:ignore wire:model="sort">
+            <select x-data x-ref="sortSelect" x-init="
+                    new Choices($refs.sortSelect, { searchEnabled: false, shouldSort: false });
+                    $refs.sortSelect.addEventListener('change', event => $dispatch('input', event.target.value))
+                ">
+                <option value="">Sort by ...</option>
                 <option value="asc">Price (low to high)</option>
                 <option value="desc">Price (high to low)</option>
             </select>
         </div>
-        <div class="col-span-2">
-            <select id="js-filter-availability">
+        <div wire:ignore wire:model="availability">
+            <select x-data x-ref="availabilitySelect" x-init="
+                new Choices($refs.availabilitySelect, { searchEnabled: false, shouldSort: false });
+                $refs.availabilitySelect.addEventListener('change', event => { console.log(event.target.value); $dispatch('input', event.target.value) })
+            ">
+                <option value="">Filter by availability</option>
                 <option value="1">In Stock</option>
                 <option value="0">Out of Stock</option>
-            </select>
-        </div>
-        <div class="col-span-4">
-            <select multiple id="js-filter-vendors">
-                @foreach($products->pluck('vendor.name', 'vendor.id')->unique() as $k=>$v)
-                    <option value="{{ $k }}">{{ $v }}</option>
-                @endforeach
             </select>
         </div>
     </div>
@@ -48,9 +48,9 @@
         </div>
     @endunless
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" x-data x-init="console.log('lol');flip.read();">
         @foreach($products as $product)
-            <x-product-card :product="$product"></x-product-card>
+            <x-product-card :product="$product" data-flip-key="{{ $product->id }}"></x-product-card>
         @endforeach
     </div>
 
@@ -58,17 +58,3 @@
         <x-loading-overlay></x-loading-overlay>
     </div>
 </div>
-
-@push('scripts')
-    <script>
-        new Choices('#js-sort-by', {
-            searchEnabled: false
-        });
-        new Choices('#js-filter-availability', {
-            searchEnabled: false
-        });
-        new Choices('#js-filter-vendors', {
-            removeItemButton: true
-        });
-    </script>
-@endpush

@@ -9,7 +9,7 @@
     <title>@yield('page_title') - Vapecrawl.ca</title>
 
     <meta name="description"
-          content="Vapecrawl.ca is search engine where you can quickly find Canadian vendors that have the cheapest vape products you are looking for.">
+          content="Vapecrawl.ca is a search engine where you can quickly find Canadian vendors that have the cheapest vape products you are looking for.">
 
     @production
         @include('shared._analytics')
@@ -42,9 +42,10 @@
     <age-validation-modal></age-validation-modal>
     @include('shared._footer')
 </div>
+<script src="https://unpkg.com/flipping@latest/dist/flipping.js"></script>
 <livewire:scripts/>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.js"></script>
 <script src="{{ mix('js/app.js') }}"></script>
-@stack('scripts')
 </body>
 </html>
