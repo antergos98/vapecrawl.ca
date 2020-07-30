@@ -11,6 +11,11 @@ class Vendor extends Model
         return $query->where('enabled', true);
     }
 
+    public function scopeDisabled($query)
+    {
+        return $query->where('enabled', false);
+    }
+
     public function products()
     {
         return $this->hasMany(Product::class);

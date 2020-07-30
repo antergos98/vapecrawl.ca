@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Nova\Metrics\DisabledVendorsCount;
+use App\Nova\Metrics\EnabledVendorsCount;
 use App\Nova\Metrics\ProductsCount;
 use App\Nova\Metrics\VendorsCount;
 use Illuminate\Support\Facades\Gate;
@@ -57,8 +59,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
-            VendorsCount::make()->width('1/2'),
-            ProductsCount::make()->width('1/2'),
+            EnabledVendorsCount::make()->width('1/3'),
+            DisabledVendorsCount::make()->width('1/3'),
+            ProductsCount::make()->width('1/3'),
         ];
     }
 

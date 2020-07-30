@@ -3,19 +3,21 @@
 namespace App\Nova\Metrics;
 
 use App\Vendor;
+use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Metrics\Value;
 
-class VendorsCount extends Value
+class DisabledVendorsCount extends Value
 {
-    public $name = "Number of vendors";
+    public $name = "Number of disabled vendors";
     /**
      * Calculate the value of the metric.
      *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return mixed
      */
-    public function calculate()
+    public function calculate(NovaRequest $request)
     {
-        return $this->result(Vendor::count());
+        return $this->result(Vendor::disabled()->count());
     }
 
     /**
@@ -45,6 +47,6 @@ class VendorsCount extends Value
      */
     public function uriKey()
     {
-        return 'vendors-count';
+        return 'disabled-vendors-count';
     }
 }
