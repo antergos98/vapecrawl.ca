@@ -1,5 +1,6 @@
 <template>
     <div>
+        <BackToTop/>
         <LoadingOverlay v-if="loading"/>
         <div class="mb-3">
             <SearchForm :searchTerm="q" @searchStarted="loading = true" @searchEnded="loading = false"/>
@@ -56,9 +57,10 @@
     import {Flipper, Flipped} from 'vue-flip-toolkit';
     import LoadingOverlay from "./LoadingOverlay";
     import SearchForm from "./SearchForm";
+    import BackToTop from "./BackToTop";
 
     export default {
-        components: {Filters, Flipped, Flipper, LoadingOverlay, SearchForm},
+        components: {Filters, BackToTop, Flipped, Flipper, LoadingOverlay, SearchForm},
         name: 'results',
         props: ['items', 'q'],
         data() {

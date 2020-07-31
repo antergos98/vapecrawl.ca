@@ -25,7 +25,7 @@
           type="image/png"
           href="{{ asset('favicon.png') }}">
 </head>
-<body class="bg-gray-900 text-white font-nunito">
+<body class="bg-gray-900 text-white font-nunito border-t-8 border-purple-600">
 <div id="app" class="flex flex-col min-h-screen justify-between">
     <div>
         <nav class="mt-6 mb-12 md:mb-24">
