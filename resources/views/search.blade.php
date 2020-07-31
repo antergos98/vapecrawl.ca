@@ -3,5 +3,5 @@
 @section('page_title', request('q') ?? 'Search')
 
 @section('content')
-    <results :items="{{ json_encode($results) }}" q="{{ request('q') }}"></results>
+    <Results :items="{{ json_encode($results) }}" q="{{ request('q') }}"/>
 @endsection
