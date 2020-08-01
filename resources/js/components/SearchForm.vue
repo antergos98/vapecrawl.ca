@@ -55,7 +55,7 @@
                     .then(response => {
                         EventBus.$emit('searched');
                         this.$store.commit('set_results', response.results);
-                        document.title = this.q + ' - Vapecrawl.ca';
+                        document.title = `Results for ${this.q}` + ' - Vapecrawl.ca';
                         window.history.pushState({q: this.q}, '', '/search?q=' + this.q);
                     })
                     .catch(() => {
