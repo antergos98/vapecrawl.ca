@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Product;
 use App\Vendor;
+use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Log;
@@ -51,9 +52,10 @@ class ImportProductsCommand extends Command
                 $class = "App\\Importer\\" . $vendor->class_name;
                 $importer = new $class($vendor);
                 $importer->import();
-            } catch (\Exception $e) {
-                $this->error($e->getMessage());
-                Log::stack(['single', 'larabug'])->error($e->getMessage());
+            } catch (Exception $e) {
+                // If there's any error with the import, disable the vendor and delete it's products
+                $vendor->update(['enabled' => false]);
+                $vendor->products()->delete();
             }
         });
 
