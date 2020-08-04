@@ -25,11 +25,13 @@
                                     <a :href="item.url + '?ref=vapecrawl.ca'" rel="noopener" target="_blank"
                                        :title="item.name" class="hover:underline">{{ item.name }}</a>
                                 </div>
-                                <div class="text-gray-600 text-sm">Sold by <a rel="noopener"
-                                                                              :href="item.vendor.url + '?ref=vapecrawl.ca&rel=noopener'"
-                                                                              target="_blank" class="hover:underline"
-                                                                              :title="item.vendor.name">
-                                    {{ item.vendor.name }}</a></div>
+                                <div class="text-gray-400 text-sm">
+                                    Sold by
+                                    <a rel="noopener" :href="item.vendor.url + '?ref=vapecrawl.ca&rel=noopener'"
+                                       target="_blank" class="hover:underline text-purple-300" :title="item.vendor.name">
+                                        {{ item.vendor.name }}
+                                    </a>
+                                </div>
                             </div>
                             <div class="flex">
                                 <div class="text-lg mr-3">
