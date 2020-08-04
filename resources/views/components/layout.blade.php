@@ -39,6 +39,8 @@
     <age-validation-modal></age-validation-modal>
     @include('shared._footer')
 </div>
+<script src="/js/manifest.js"></script>
+<script src="/js/vendor.js"></script>
 <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
