@@ -1,8 +1,6 @@
-@extends('layouts.app')
-
 @section('page_title', 'FAQ')
 
-@section('content')
+<x-layout>
     <h1 class="text-2xl mb-6 md:text-3xl">Frequently Asked Questions</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
         <div>
@@ -30,4 +28,4 @@
             </p>
         </div>
     </div>
-@endsection
+</x-layout>
