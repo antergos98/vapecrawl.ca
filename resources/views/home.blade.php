@@ -13,7 +13,7 @@
         <div class="w-full sm:w-5/6 mb-2 sm:mb-0">
             <div class="px-3">
                 <input type="text" class="w-full p-3 rounded outline-none text-gray-900"
-                       placeholder="Search for products... (12 monkeys, Blotto RTA, Aegix X, etc.)" name="q" autofocus>
+                       placeholder="Search for products... (12 monkeys, Blotto RTA, Aegis, etc.)" name="q" autofocus>
             </div>
         </div>
         <div class="w-full sm:w-1/6">
