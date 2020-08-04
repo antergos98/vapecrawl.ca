@@ -6,7 +6,7 @@
         <div>
             <h2 class="text-xl mb-6 md:text-2xl">Who are you?</h2>
             <p>
-                I'm a guy who's trying his best to help people find products for the cheapest without having to spend hours on Google searching for a particular product. I also want to help amazing Canadian vendors to get more visits and sales on their website.
+                I'm a guy who's trying his best to help people find products for the cheapest without having to spend hours on Google searching for a particular product. I also want to help trustworthy Canadian vendors to get more visits and sales on their website.
             </p>
         </div>
         <div>

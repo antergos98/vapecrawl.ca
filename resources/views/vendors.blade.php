@@ -1,7 +1,7 @@
 @section('page_title', 'Vendors')
 
 <x-layout>
-    <h1 class="text-2xl mb-10 md:text-3xl">Discover <span class="underline">Canadian</span> vendors that are indexed on Vapecrawl</h1>
+    <h1 class="text-2xl mb-10 md:text-3xl">Discover <span class="underline">reliable</span> vendors that are indexed on Vapecrawl</h1>
     <div class="flex flex-wrap -mx-3 mb-8">
         @foreach($vendors as $vendor)
             <div class="w-full sm:w-1/3 mb-2">
