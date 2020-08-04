@@ -48,6 +48,9 @@
                 </Flipped>
             </div>
         </Flipper>
+
+        <LoadMore v-if="$store.state.results.length" :q="q" @no-more-results=""/>
+
         <div class="text-lg md:text-2xl text-center mt-6" v-if="$store.getters.filteredResults.length === 0">
             <p>Sorry, there is no results based on your keywords and/or filters. 😨</p>
         </div>
@@ -60,9 +63,10 @@
     import LoadingOverlay from "./LoadingOverlay";
     import SearchForm from "./SearchForm";
     import BackToTop from "./BackToTop";
+    import LoadMore from "./LoadMore";
 
     export default {
-        components: {Filters, BackToTop, Flipped, Flipper, LoadingOverlay, SearchForm},
+        components: {LoadMore, Filters, BackToTop, Flipped, Flipper, LoadingOverlay, SearchForm},
         name: 'results',
         props: ['items', 'q'],
         data() {
