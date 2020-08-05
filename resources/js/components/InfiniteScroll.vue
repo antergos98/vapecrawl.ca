@@ -50,7 +50,7 @@
 
                 let url = `/search?skip=${skip}`;
 
-                if (this.$store.state) {
+                if (this.q) {
                     url += `&q=${this.q}`
                 }
                 fetchApi(url)
