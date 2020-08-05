@@ -75,6 +75,7 @@
         },
         mounted() {
             this.$store.commit('set_results', this.items);
+            this.$store.commit('set_search_term', this.q);
         }
     }
 </script>
