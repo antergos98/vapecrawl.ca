@@ -20,7 +20,10 @@ mix
         processCssUrls: false,
         postCss: [tailwindcss('./tailwind.config.js')],
     })
-    .version()
     .sourceMaps()
     .purgeCss();
+
+if (mix.inProduction()) {
+    mix.version();
+}
 

@@ -35,10 +35,10 @@
                 window.removeEventListener('scroll', this.onScroll);
             },
             onScroll() {
-                const scrollY = window.scrollY
-                const visible = document.documentElement.clientHeight
-                const pageHeight = document.documentElement.scrollHeight
-                const bottomOfPage = visible + scrollY >= pageHeight
+                const scrollY = window.scrollY;
+                const visible = document.documentElement.clientHeight;
+                const pageHeight = document.documentElement.scrollHeight - 250;
+                const bottomOfPage = visible + scrollY >= pageHeight;
                 if (bottomOfPage || pageHeight < visible) {
                     this.loadMore();
                 }
