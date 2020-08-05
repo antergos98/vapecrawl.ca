@@ -14,7 +14,6 @@ require('laravel-mix-purgecss');
  */
 
 mix
-    .extract(['vue', 'vuex', 'vue-lazyload', 'vue-multiselect', 'lodash'])
     .js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .options({
