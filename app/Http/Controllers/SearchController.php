@@ -11,16 +11,15 @@ class SearchController
     {
         if (request('q')) {
             $results = Product::search(request('q'), function(Index $index, $query, $options) {
-                $options['limit'] = 10000;
+                $options['limit'] = 32;
+                $options['offset'] = request('skip') ?? 0;
                 return $index->search($query, $options);
             })->get();
         } else {
-            $results = Product::orderBy('id', 'desc')->get();
+            $results = Product::orderBy('id', 'desc')->skip(request('skip') ?? 0)->limit(32)->get();
         }
 
         $results = $results->load('vendor');
-
-        $results = $results->skip(request('skip') ?? 0)->take(32)->flatten();
 
         if (request()->ajax()) {
             return response()->json(compact('results'));
