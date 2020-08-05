@@ -10,7 +10,8 @@ export default new Vuex.Store({
         results: [],
         sort: null,
         filters: null,
-        skip: 32
+        skip: 32,
+        searchTerm: null
     },
     mutations: {
         set_results(state, payload) {
@@ -24,6 +25,9 @@ export default new Vuex.Store({
         },
         set_skip(state, payload) {
             state.skip = payload;
+        },
+        set_search_term(state, payload) {
+            state.searchTerm = payload;
         }
     },
     getters: {

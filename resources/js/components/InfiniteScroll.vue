@@ -17,7 +17,6 @@
     import fetchApi from "../fetchApi";
 
     export default {
-        props: ['q'],
         data: () => ({
             show: true
         }),
@@ -50,8 +49,8 @@
 
                 let url = `/search?skip=${skip}`;
 
-                if (this.q) {
-                    url += `&q=${this.q}`
+                if (this.$store.state.searchTerm !== "" && this.$store.state.searchTerm !== null) {
+                    url += `&q=${this.$store.state.searchTerm}`
                 }
                 fetchApi(url)
                     .then(response => response.json())

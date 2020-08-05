@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <InfiniteScroll v-if="$store.state.results.length >= 32" :q="q"/>
+        <InfiniteScroll v-if="$store.state.results.length >= 32"/>
 
         <div class="text-lg md:text-2xl text-center mt-6" v-if="$store.getters.filteredResults.length === 0">
             <p>Sorry, there is no results based on your keywords and/or filters. 😨</p>

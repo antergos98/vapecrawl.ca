@@ -64,8 +64,9 @@
                     })
                     .finally(() => {
                         this.$emit('searchEnded');
+                        this.$store.commit('set_search_term', this.q);
                         this.searchTermCopy = this.q;
-                        this.$store.commit('set_skip', 48);
+                        this.$store.commit('set_skip', 32);
                     });
             }
         }
