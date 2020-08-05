@@ -6,9 +6,9 @@
             <SearchForm :searchTerm="q" @searchStarted="loading = true" @searchEnded="loading = false"/>
         </div>
         <Filters/>
-        <Flipper :flip-key="flipKey" class="flex flex-wrap -mx-3">
+        <div class="flex flex-wrap -mx-3">
             <div v-for="item in $store.getters.filteredResults" :key="item.id" class="w-full md:w-1/2 px-3 mb-6">
-                <Flipped :flip-id="item.id.toString()" class="bg-gray-800 p-6 rounded">
+                <div class="bg-gray-800 p-6 rounded">
                     <div class="flex flex-col md:flex-row">
                         <div class="flex flex-shrink-0 mb-6 md:mb-0 md:mr-6">
                             <div class="object-cover mx-auto w-48 md:w-24 lg:w-32 h-full">
@@ -45,9 +45,12 @@
                             </div>
                         </div>
                     </div>
-                </Flipped>
+                </div>
             </div>
-        </Flipper>
+        </div>
+
+        <InfiniteScroll v-if="$store.state.results.length >= 32" :q="q"/>
+
         <div class="text-lg md:text-2xl text-center mt-6" v-if="$store.getters.filteredResults.length === 0">
             <p>Sorry, there is no results based on your keywords and/or filters. 😨</p>
         </div>
@@ -56,13 +59,13 @@
 
 <script>
     import Filters from './Filters';
-    import {Flipper, Flipped} from 'vue-flip-toolkit';
     import LoadingOverlay from "./LoadingOverlay";
     import SearchForm from "./SearchForm";
     import BackToTop from "./BackToTop";
+    import InfiniteScroll from "./InfiniteScroll";
 
     export default {
-        components: {Filters, BackToTop, Flipped, Flipper, LoadingOverlay, SearchForm},
+        components: {InfiniteScroll, Filters, BackToTop, LoadingOverlay, SearchForm},
         name: 'results',
         props: ['items', 'q'],
         data() {
@@ -72,11 +75,6 @@
         },
         mounted() {
             this.$store.commit('set_results', this.items);
-        },
-        computed: {
-            flipKey() {
-                return this.$store.getters.filteredResults.map((item) => item.id).join('');
-            }
         }
     }
 </script>

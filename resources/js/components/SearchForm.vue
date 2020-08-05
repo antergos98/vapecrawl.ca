@@ -4,7 +4,7 @@
             <div class="w-full sm:w-5/6 mb-3 sm:mb-0">
                 <div class="px-3">
                     <input type="text" class="w-full p-3 rounded outline-none text-gray-900"
-                           placeholder="Search for products... (12 monkeys, Blotto RTA, Aegis, etc.)" v-model="q" required autofocus>
+                           placeholder="Search for products... (12 monkeys, Blotto RTA, Aegis, etc.)" v-model="q" autofocus>
                 </div>
             </div>
             <div class="w-full sm:w-1/6">
@@ -20,6 +20,7 @@
 
 <script>
     import EventBus from "../event-bus";
+    import fetchApi from "../fetchApi";
 
     export default {
         props: ['searchTerm'],
@@ -43,19 +44,17 @@
             },
             performSearch: function () {
                 this.$emit('searchStarted');
-                const options = {
-                    method: 'GET',
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                    }
-                };
 
-                fetch('/search?q=' + this.q, options)
+                fetchApi('/search?q=' + this.q)
                     .then(response => response.json())
                     .then(response => {
                         EventBus.$emit('searched');
                         this.$store.commit('set_results', response.results);
-                        document.title = `Results for ${this.q}` + ' - Vapecrawl.ca';
+                        if (this.q === "" || this.q === null) {
+                            document.title = 'Results' + ' - Vapecrawl.ca';
+                        } else {
+                            document.title = `Results for ${this.q}` + ' - Vapecrawl.ca';
+                        }
                         window.history.pushState({q: this.q}, '', '/search?q=' + this.q);
                     })
                     .catch(() => {
@@ -66,6 +65,7 @@
                     .finally(() => {
                         this.$emit('searchEnded');
                         this.searchTermCopy = this.q;
+                        this.$store.commit('set_skip', 48);
                     });
             }
         }

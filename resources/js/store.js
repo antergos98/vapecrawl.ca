@@ -9,7 +9,8 @@ export default new Vuex.Store({
     state: {
         results: [],
         sort: null,
-        filters: null
+        filters: null,
+        skip: 32
     },
     mutations: {
         set_results(state, payload) {
@@ -20,6 +21,9 @@ export default new Vuex.Store({
         },
         set_filters(state, payload) {
             state.filters = payload;
+        },
+        set_skip(state, payload) {
+            state.skip = payload;
         }
     },
     getters: {
