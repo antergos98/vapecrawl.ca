@@ -1,5 +1,5 @@
 <template>
-    <div class="loading">
+    <div class="loading" v-show="show">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
              class="h-12 w-12"
              style="margin: auto; background: none; display: block; shape-rendering: auto;"
@@ -14,20 +14,27 @@
 </template>
 
 <script>
+    import fetchApi from "../fetchApi";
+
     export default {
-        name: "LoadMore",
         props: ['q'],
         data: () => ({
-            observer: null
+            show: true
         }),
         mounted() {
             this.onScroll = this.onScroll.bind(this);
-            window.addEventListener('scroll', this.onScroll);
+            this.initListener();
         },
         beforeDestroy() {
-            window.removeEventListener('scroll', this.onScroll);
+            this.destroyListener();
         },
         methods: {
+            initListener() {
+                window.addEventListener('scroll', this.onScroll);
+            },
+            destroyListener() {
+                window.removeEventListener('scroll', this.onScroll);
+            },
             onScroll() {
                 const scrollY = window.scrollY
                 const visible = document.documentElement.clientHeight
@@ -38,13 +45,7 @@
                 }
             },
             loadMore() {
-                const options = {
-                    method: 'GET',
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                    }
-                };
-
+                this.destroyListener();
                 const skip = this.$store.state.skip;
 
                 let url = `/search?skip=${skip}`;
@@ -52,12 +53,18 @@
                 if (this.$store.state) {
                     url += `&q=${this.q}`
                 }
-
-                fetch(url, options)
+                fetchApi(url)
                     .then(response => response.json())
                     .then(response => {
-                        this.$store.commit('add_results', response.results);
-                        this.$store.commit('set_skip', this.$store.state.skip += 48);
+                        this.$store.commit('set_results', this.$store.state.results.concat(response.results));
+                        this.$store.commit('set_skip', this.$store.state.skip += 32)
+                        if (response.results.length) {
+                            this.initListener();
+                            this.show = true;
+                        } else {
+                            this.destroyListener();
+                            this.show = false;
+                        }
                     });
             }
         }

@@ -29,6 +29,7 @@
         <a class="hover:underline" href="/search?q=blotto+rta">Blotto RTA</a>,
         <a class="hover:underline" href="/search?q=aegis+legend">Aegis Legend</a>,
         <a class="hover:underline" href="/search?q=deathwish">Deathwish</a>,
+        <a class="hover:underline" href="/search?q=kylin">Kylin</a>,
         <a class="hover:underline" href="/search?q=caliburn">Caliburn</a>
     </div>
 </x-layout>

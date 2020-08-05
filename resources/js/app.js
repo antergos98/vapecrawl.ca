@@ -9,7 +9,11 @@ Vue.config.productionTip = false
 
 Vue.use(Vuex);
 Vue.use(VueLazyload, {
-    observer: true
+    observer: true,
+    observerOptions: {
+        rootMargin: '50px',
+        threshold: 0.1
+    }
 });
 
 Vue.component('results', require('./components/Results.vue').default);

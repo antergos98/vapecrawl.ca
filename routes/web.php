@@ -20,4 +20,7 @@ Route::get('/search', 'SearchController');
 Route::view('/contact', 'contact');
 Route::get('/vendors', 'VendorsController');
 Route::view('/faq', 'faq');
+Route::get('/test', function() {
+    sleep(30);
+});
 
