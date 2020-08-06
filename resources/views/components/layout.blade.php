@@ -34,7 +34,7 @@
         </main>
 
     </div>
-    <age-validation-modal></age-validation-modal>
+    <age-validation-modal/>
     @include('shared._footer')
 </div>
 <script src="{{ mix('js/app.js') }}"></script>

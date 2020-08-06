@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Product;
-use MeiliSearch\Index;
 
 class SearchController
 {
     public function __invoke()
     {
         if (request('q')) {
-            $results = Product::search(request('q'), function(Index $index, $query, $options) {
+            $results = Product::search(request('q'), function ($index, $query, $options) {
                 $options['limit'] = 32;
                 $options['offset'] = request('skip') ?? 0;
                 return $index->search($query, $options);

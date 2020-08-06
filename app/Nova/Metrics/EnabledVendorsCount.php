@@ -8,6 +8,7 @@ use Laravel\Nova\Metrics\Value;
 class EnabledVendorsCount extends Value
 {
     public $name = "Number of enabled vendors";
+
     /**
      * Calculate the value of the metric.
      *
@@ -35,7 +36,7 @@ class EnabledVendorsCount extends Value
      */
     public function cacheFor()
     {
-        // return now()->addMinutes(5);
+        return 0;
     }
 
     /**

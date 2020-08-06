@@ -8,6 +8,7 @@ use Laravel\Nova\Metrics\Value;
 class ProductsCount extends Value
 {
     public $name = "Number of products";
+
     /**
      * Calculate the value of the metric.
      *
@@ -35,7 +36,7 @@ class ProductsCount extends Value
      */
     public function cacheFor()
     {
-        // return now()->addMinutes(5);
+        return 0;
     }
 
     /**
