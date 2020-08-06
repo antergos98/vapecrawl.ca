@@ -9,10 +9,11 @@ use Laravel\Nova\Metrics\Value;
 class DisabledVendorsCount extends Value
 {
     public $name = "Number of disabled vendors";
+
     /**
      * Calculate the value of the metric.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return mixed
      */
     public function calculate(NovaRequest $request)
@@ -37,7 +38,7 @@ class DisabledVendorsCount extends Value
      */
     public function cacheFor()
     {
-        // return now()->addMinutes(5);
+        return 0;
     }
 
     /**

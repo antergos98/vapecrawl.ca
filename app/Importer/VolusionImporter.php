@@ -28,11 +28,11 @@ class VolusionImporter implements ImporterInterface
             $url = $this->vendor->url . "pindex.asp?Page=$page";
             $crawler = $this->client->request('GET', $url);
 
-            if ($crawler->filter('#content_area table')->eq('2')->filter('tr')->count() <= 0) {
+            if ($crawler->filter('#content_area table')->eq(2)->filter('tr')->count() <= 0) {
                 break;
             }
 
-            $crawler->filter('#content_area table')->eq('2')->filter('tr')->each(function (Crawler $crawler) {
+            $crawler->filter('#content_area table')->eq(2)->filter('tr')->each(function (Crawler $crawler) {
                 $product_url = $crawler->filter('td')->eq(2)->filter('a')->attr('href');
 
                 $page = $this->client->request('GET', $product_url);
