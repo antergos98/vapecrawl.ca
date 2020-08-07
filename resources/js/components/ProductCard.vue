@@ -6,7 +6,7 @@
                     <a :href="product.url" rel="noopener" target="_blank"
                        :title="product.name">
                         <img
-                            class="h-56 md:h-32 lg:h-48 rounded" v-lazy="product.image"
+                            class="h-56 md:h-32 lg:h-48 rounded md:mx-auto" v-lazy="product.image"
                             :alt="product.name">
                     </a>
                 </div>
@@ -27,11 +27,11 @@
                     </div>
                 </div>
                 <div class="flex items-center space-x-3" :class="{'mb-3': product.vendor.coupons.length}">
-                    <span class="text-lg">{{ price }} $</span>
+                    <span class="text-lg font-bold">{{ price }} $</span>
                     <span v-if="!product.in_stock" class="inline-block bg-red-200 text-red-700 rounded-full text-xs px-2">Out of Stock</span>
                 </div>
                 <div v-show="product.vendor.coupons.length" class="flex flex-wrap -mx-1">
-                    <div class="px-1 mb-1" v-for="coupon in product.vendor.coupons">
+                    <div class="px-1" v-for="coupon in product.vendor.coupons">
                         <Coupon :item="coupon"></Coupon>
                     </div>
                 </div>

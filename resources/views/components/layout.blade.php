@@ -28,14 +28,14 @@
         </div>
 
         <main class="mb-8">
-            <div class="{{ $attributes['is-home'] ? 'max-w-5xl' : 'max-w-screen-xl' }} mx-auto px-6 xl:px-0 mb-6">
+            <div class="{{ $attributes['is-home'] ? 'max-w-4xl' : 'max-w-screen-xl' }} mx-auto px-6 xl:px-0 mb-6">
                 {{ $slot }}
             </div>
         </main>
 
     </div>
-    <age-validation-modal/>
     @include('shared._footer')
+    <age-validation-modal/>
 </div>
 <script src="{{ mix('js/app.js') }}"></script>
 </body>

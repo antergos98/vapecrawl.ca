@@ -13,7 +13,7 @@
         <div class="w-full sm:w-5/6 mb-2 sm:mb-0">
             <div class="px-3">
                 <input type="text" class="w-full p-3 rounded outline-none text-gray-900"
-                       placeholder="Search for products... (12 monkeys, Blotto RTA, Aegis, etc.)" name="q">
+                       placeholder="Search for products..." name="q">
             </div>
         </div>
         <div class="w-full sm:w-1/6">
@@ -24,12 +24,12 @@
             </div>
         </div>
     </form>
-    <div class="mt-2 block">
+    <div class="mt-2 ml-1 text-sm block">
         Popular:
-        <a class="hover:underline" href="/search?q=blotto+rta">Blotto RTA</a>,
-        <a class="hover:underline" href="/search?q=aegis+legend">Aegis Legend</a>,
-        <a class="hover:underline" href="/search?q=deathwish">Deathwish</a>,
-        <a class="hover:underline" href="/search?q=kylin">Kylin</a>,
-        <a class="hover:underline" href="/search?q=caliburn">Caliburn</a>
+        <a class="underline" href="/search?q=blotto+rta">Blotto RTA</a>,
+        <a class="underline" href="/search?q=aegis+legend">Aegis Legend</a>,
+        <a class="underline" href="/search?q=deathwish">Deathwish</a>,
+        <a class="underline" href="/search?q=kylin">Kylin</a>,
+        <a class="underline" href="/search?q=caliburn">Caliburn</a>
     </div>
 </x-layout>
