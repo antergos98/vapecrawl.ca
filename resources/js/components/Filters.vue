@@ -83,7 +83,9 @@
         computed: {
             filterByVendorsOptions() {
                 return _uniqBy(this.$store.state.results, 'vendor.id')
-                    .map(result => ({label: result.vendor.name, key: 'vendor.id', value: result.vendor.id}))
+                    .map(result => {
+                        return {label: result.vendor.name, key: 'vendor.id', value: result.vendor.id}
+                    })
                     .sort((a, b) => a.label.localeCompare(b.label))
             }
         }
