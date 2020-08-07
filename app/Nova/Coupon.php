@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Textarea;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Coupon extends Resource
 {
@@ -45,7 +43,7 @@ class Coupon extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Code'),
-            Textarea::make('Description'),
+            Text::make('Description'),
             BelongsTo::make('Vendor')
         ];
     }
