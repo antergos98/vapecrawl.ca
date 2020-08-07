@@ -11,7 +11,7 @@ class SearchController
         if (request('q')) {
             $results = Product::search(request('q'), function ($index, $query, $options) {
                 $options['limit'] = 32;
-                $options['offset'] = request('skip') ?? 0;
+                $options['offset'] = (int) request('skip') ?? 0;
                 return $index->search($query, $options);
             })->get();
         } else {
