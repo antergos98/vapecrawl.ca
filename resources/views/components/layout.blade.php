@@ -20,7 +20,7 @@
 
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
 </head>
-<body class="bg-gray-900 text-white font-nunito border-t-8 border-purple-600">
+<body class="bg-gray-900 text-white font-nunito border-t-8 border-purple-600 antialiased">
 <div id="app" class="flex flex-col min-h-screen justify-between">
     <div>
         <div class="mt-6 {{ $attributes['is-home'] ? 'md:mb-32': 'md:mb-24' }} mb-12">
@@ -28,7 +28,7 @@
         </div>
 
         <main class="mb-8">
-            <div class="{{ $attributes['is-home'] ? 'max-w-4xl' : 'max-w-6xl' }} mx-auto px-6 xl:px-0 mb-6">
+            <div class="{{ $attributes['is-home'] ? 'max-w-5xl' : 'max-w-screen-xl' }} mx-auto px-6 xl:px-0 mb-6">
                 {{ $slot }}
             </div>
         </main>

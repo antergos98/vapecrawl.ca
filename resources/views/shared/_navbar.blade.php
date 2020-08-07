@@ -1,5 +1,5 @@
 <nav>
-    <div class="max-w-6xl mx-auto px-6 xl:px-0">
+    <div class="max-w-screen-xl mx-auto px-6 xl:px-0">
         <div class="flex flex-col items-center md:flex-row">
             <div class="md:mr-12 mb-3 md:mb-0">
                 <a href="/" class="text-3xl font-bold ">Vapecrawl</a>

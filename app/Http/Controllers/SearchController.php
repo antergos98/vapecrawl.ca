@@ -18,7 +18,7 @@ class SearchController
             $results = Product::orderBy('id', 'desc')->skip(request('skip') ?? 0)->limit(32)->get();
         }
 
-        $results = $results->load('vendor');
+        $results = $results->load('vendor.coupons');
 
         if (request()->ajax()) {
             return response()->json(compact('results'));

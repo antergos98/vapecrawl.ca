@@ -2,22 +2,19 @@
 
 namespace App\Nova;
 
-use App\Nova\Actions\DeleteProducts;
-use App\Nova\Actions\ImportProducts;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Boolean;
 
-class Vendor extends Resource
+class Coupon extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Vendor::class;
+    public static $model = \App\Coupon::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -32,7 +29,7 @@ class Vendor extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name'
+        'id', 'name', 'description'
     ];
 
     /**
@@ -45,23 +42,9 @@ class Vendor extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Name')
-                ->rules(['required'])
-                ->creationRules('unique:vendors,name')
-                ->updateRules('unique:vendors,name,{{resourceId}}'),
-            Text::make('URL')
-                ->rules(['required', 'url'])
-                ->help('Don\'t forget the \'/\' at the end')
-                ->creationRules('unique:vendors,url')
-                ->updateRules('unique:vendors,url,{{resourceId}}'),
-            Boolean::make('Enabled'),
-            Text::make('Products', fn ($vendor) => $vendor->products()->count())
-                ->onlyOnIndex(),
-            Text::make('Class Name')
-                ->hideFromIndex()
-                ->rules(['required'])
-                ->help('This field will be used to call the proper importer class.'),
-            HasMany::make('Coupons')
+            Text::make('Code'),
+            Text::make('Description'),
+            BelongsTo::make('Vendor')
         ];
     }
 
@@ -106,9 +89,6 @@ class Vendor extends Resource
      */
     public function actions(Request $request)
     {
-        return [
-            ImportProducts::make(),
-            DeleteProducts::make()
-        ];
+        return [];
     }
 }
