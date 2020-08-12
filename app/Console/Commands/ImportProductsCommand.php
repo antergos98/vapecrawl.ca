@@ -54,6 +54,7 @@ class ImportProductsCommand extends Command
                 $importer->import();
             } catch (Exception $e) {
                 // If there's any error with the import, disable the vendor and delete it's products
+                Log::channel('larabug')->error($e->getMessage());
                 $vendor->update(['enabled' => false]);
                 $vendor->products()->delete();
             }
