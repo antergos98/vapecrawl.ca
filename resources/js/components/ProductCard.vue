@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-gray-800 p-6 rounded flex-1 flex items-center">
+    <div class="bg-gray-800 rounded flex-1 flex p-4 items-center">
         <div class="flex flex-col md:flex-row">
             <div class="flex flex-shrink-0 mb-6 md:mb-0 md:mr-6 h-full">
                 <div class="object-cover w-56 md:w-32 h-full">
@@ -15,7 +15,7 @@
                 <div class="mb-4">
                     <div class="text-lg font-semibold mb-1">
                         <a :href="product.url" rel="noopener" target="_blank"
-                           :title="product.name" class="hover:underline">{{ product.name }}</a>
+                           :title="product.name" class="underline">{{ product.name }}</a>
                     </div>
                     <div class="text-gray-400 text-sm">
                         Sold by
