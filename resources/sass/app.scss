@@ -7,6 +7,16 @@
 
 @tailwind utilities;
 
+.page-title {
+    @apply text-3xl font-bold mb-3;
+}
+
+@screen md {
+    .page-title {
+        @apply text-4xl;
+    }
+}
+
 html {
     scroll-behavior: smooth;
 }

@@ -23,7 +23,7 @@
 <body class="bg-gray-900 text-white font-nunito border-t-8 border-purple-600 antialiased">
 <div id="app" class="flex flex-col min-h-screen justify-between">
     <div>
-        <div class="mt-6 {{ $attributes['is-home'] ? 'md:mb-32': 'md:mb-24' }} mb-12">
+        <div class="mt-6 mb-24 sm:mb-32">
             @include('shared._header')
         </div>
 
