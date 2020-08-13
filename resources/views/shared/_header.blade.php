@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="hidden sm:block">
-                <a class="bg-purple-600 flex items-center hover:bg-purple-700 px-4 py-3 font-bold rounded" href="https://www.buymeacoffee.com/vapecrawl" target="_blank">
+                <a class="bg-purple-600 w-full flex items-center hover:bg-purple-700 px-4 py-3 font-bold rounded" href="https://www.buymeacoffee.com/vapecrawl" target="_blank">
                     <svg class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor" class="gift w-6 h-6"><path fill-rule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z" clip-rule="evenodd"></path><path d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z"></path></svg>
                     Buy me a coffee
                 </a>

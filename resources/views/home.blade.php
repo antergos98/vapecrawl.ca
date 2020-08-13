@@ -18,7 +18,7 @@
         </div>
         <div class="w-full sm:w-1/6">
             <div class="px-3">
-                <button type="submit" class="bg-purple-600 w-full py-3 rounded hover:bg-purple-700 focus:outline-none">
+                <button type="submit" class="bg-purple-600 w-full hover:bg-purple-700 focus:outline-none px-4 py-3 font-bold rounded">
                     Search
                 </button>
             </div>
