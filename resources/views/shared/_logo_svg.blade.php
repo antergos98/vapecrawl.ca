@@ -1,11 +1,6 @@
-<nav>
-    <div class="max-w-screen-xl mx-auto px-6 xl:px-0">
-        <div class="flex flex-col items-center md:flex-row">
-            <div class="md:mr-12 mb-3 md:mb-0">
-                <a href="/">
-                    <svg class="h-12 w-12 fill-current" version="1.2"
-                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 417.42"
-                         overflow="visible" xml:space="preserve">
+<svg class="h-12 w-12 fill-current" version="1.2"
+     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 417.42"
+     overflow="visible" xml:space="preserve">
                 <path fill="#FFFFFF" d="M463.23,14.79l-0.14-0.09C444.73,2.5,422.7-1.83,401.08,2.52c-21.62,4.36-40.26,16.87-52.46,35.24
 	L250.3,185.63L151.43,36.9C139.23,18.53,120.58,6,98.95,1.65C77.31-2.7,55.28,1.62,36.9,13.84C18.53,26.06,6.01,44.7,1.65,66.33
 	S1.63,110,13.85,128.37l167.5,251.97c4.71,7.08,10.39,13.29,16.82,18.47c1.36,1.12,2.76,2.17,4.19,3.19
@@ -20,16 +15,3 @@
 	l0.14,0.1c14.58,9.69,18.56,29.45,8.87,44.03L319,288.97c-0.01-0.04-0.04-0.06-0.06-0.1l-38.12-57.34L390.93,65.89
 	C395.63,58.82,402.79,54.01,411.11,52.33z"/>
                 </svg>
-                </a>
-            </div>
-            <div>
-                <ul class="flex font-bold space-x-6">
-                    <li><a class="hover:underline" href="/search">Search</a></li>
-                    <li><a class="hover:underline" href="/contact">Contact us</a></li>
-                    <li><a class="hover:underline" href="/faq">FAQ</a></li>
-                    <li><a class="hover:underline" href="/vendors">Vendors</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</nav>

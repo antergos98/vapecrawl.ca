@@ -24,7 +24,7 @@
 <div id="app" class="flex flex-col min-h-screen justify-between">
     <div>
         <div class="mt-6 {{ $attributes['is-home'] ? 'md:mb-32': 'md:mb-24' }} mb-12">
-            @include('shared._navbar')
+            @include('shared._header')
         </div>
 
         <main class="mb-8">
