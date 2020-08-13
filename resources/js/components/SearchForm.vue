@@ -3,14 +3,15 @@
         <div class="flex flex-wrap -mx-3">
             <div class="w-full sm:w-5/6 mb-3 sm:mb-0">
                 <div class="px-3">
-                    <input type="text" class="w-full p-3 rounded outline-none text-gray-900"
-                           placeholder="Search for products..." v-model="q" autofocus>
+                    <input ref="searchbar" type="text" class="w-full p-3 rounded outline-none text-gray-900"
+                           placeholder='Search for products... (Press "/" to focus)' v-model="q" autofocus>
                 </div>
             </div>
             <div class="w-full sm:w-1/6">
                 <div class="px-3">
                     <button type="submit"
-                            class="bg-purple-600 w-full hover:bg-purple-700 focus:outline-none px-4 py-3 font-bold rounded">Search
+                            class="bg-purple-600 w-full hover:bg-purple-700 focus:outline-none px-4 py-3 font-bold rounded">
+                        Search
                     </button>
                 </div>
             </div>
@@ -31,8 +32,15 @@
         mounted() {
             this.q = this.searchTerm;
             this.searchTermCopy = this.searchTerm;
+            document.addEventListener('keydown', this.onKeydown);
         },
         methods: {
+            onKeydown(e) {
+                if (e.key === "/" && document.activeElement !== this.$refs.searchbar) {
+                    e.preventDefault();
+                    this.$refs.searchbar.focus();
+                }
+            },
             onSubmit() {
                 if (this.q == this.searchTermCopy) {
                     this.$emit('searchStarted');
