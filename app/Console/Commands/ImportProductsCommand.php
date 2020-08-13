@@ -5,9 +5,9 @@ namespace App\Console\Commands;
 use App\Product;
 use App\Vendor;
 use Exception;
+use Honeybadger\HoneybadgerLaravel\Facades\Honeybadger;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Log;
 use Laravel\Scout\Console\FlushCommand;
 use Laravel\Scout\Console\ImportCommand;
 
@@ -54,7 +54,7 @@ class ImportProductsCommand extends Command
                 $importer->import();
             } catch (Exception $e) {
                 // If there's any error with the import, disable the vendor and delete it's products
-                Log::channel('larabug')->error($e->getMessage());
+                Honeybadger::notify($e->getMessage());
                 $vendor->update(['enabled' => false]);
                 $vendor->products()->delete();
             }
