@@ -1,5 +1,9 @@
 <?php
 
+use App\Coupon;
+use App\Product;
+use App\User;
+use App\Vendor;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,6 +15,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        $vendors = factory(Vendor::class, 5)->create();
+
+        foreach($vendors as $vendor) {
+            factory(Product::class, 20)->create(['vendor_id' => $vendor]);
+            factory(Coupon::class)->create();
+        }
+
+        factory(User::class)->create([
+            'name' => 'Vincent Bergeron',
+            'email' => "info@vapecrawl.ca",
+            'password' => bcrypt('password')
+        ]);
     }
 }
