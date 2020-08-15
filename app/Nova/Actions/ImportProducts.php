@@ -3,6 +3,7 @@
 namespace App\Nova\Actions;
 
 use App\Vendor;
+use Honeybadger\HoneybadgerLaravel\Facades\Honeybadger;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -24,11 +25,17 @@ class ImportProducts extends Action implements ShouldQueue
     public function handle(ActionFields $fields, Collection $models)
     {
         $models->each(function (Vendor $vendor) {
-            $vendor->products()->delete();
-            $class = "App\\Importer\\" . $vendor->class_name;
-            $importer = new $class($vendor);
-            $importer->import();
-            $vendor->products()->searchable();
+            try {
+                $vendor->products()->delete();
+                $class = "App\\Importer\\" . $vendor->class_name;
+                $importer = new $class($vendor);
+                $importer->import();
+                $vendor->products()->searchable();
+                $this->markAsFinished($vendor);
+            } catch (\Exception $e) {
+                $this->markAsFailed($vendor, $e);
+                Honeybadger::notify($e);
+            }
         });
     }
 

@@ -54,7 +54,7 @@ class ImportProductsCommand extends Command
                 $importer->import();
             } catch (Exception $e) {
                 // If there's any error with the import, disable the vendor and delete it's products
-                Honeybadger::notify($e->getMessage());
+                Honeybadger::notify($e);
                 $vendor->update(['enabled' => false]);
                 $vendor->products()->delete();
             }
