@@ -49,7 +49,6 @@ class WCImporter implements ImporterInterface
             'image' => $result['images'][0]['src'] ?? null,
             'in_stock' => $result['is_in_stock'],
             'url' => $result['permalink'],
-            'real_id' => (int)$result['id'],
             'vendor_id' => $this->vendor->id
         ];
     }

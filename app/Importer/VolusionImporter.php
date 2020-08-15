@@ -58,7 +58,6 @@ class VolusionImporter implements ImporterInterface
                         'image' => $image,
                         'in_stock' => $in_stock,
                         'url' => $product_url,
-                        'real_id' => 1,
                         'vendor_id' => $this->vendor->id
                     ];
 

@@ -21,15 +21,12 @@ class DashvapesImporter implements ImporterInterface
 
         $data = collect($products)
             ->map(function ($product) {
-                $parts = explode('/', $product['image']);
-                $realId = $parts[count($parts) - 2];
                 return [
                     'name' => $product['name'] . ' - ' . $product['brand'],
                     'price' => (int)((float)$product['price'] * 100),
                     'image' => $product['image'],
                     'in_stock' => $product['availability'] === "In Stock",
                     'url' => $product['url'],
-                    'real_id' => (int)$realId,
                     'vendor_id' => $this->vendor->id
                 ];
             });

@@ -12,7 +12,6 @@ $factory->define(App\Product::class, function (Faker $faker) {
         'in_stock' => $faker->boolean,
         'image' => $faker->imageUrl(),
         'url' => $faker->url,
-        'real_id' => $faker->randomNumber(),
         'vendor_id' => factory(Vendor::class),
     ];
 });

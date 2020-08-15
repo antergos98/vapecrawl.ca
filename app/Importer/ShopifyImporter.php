@@ -49,7 +49,6 @@ class ShopifyImporter implements ImporterInterface
             'image' => $result['images'][0]['src'] ?? null,
             'in_stock' => $result['variants'][0]['available'] ?? false,
             'url' => $this->vendor->url . 'products/' . $result['handle'],
-            'real_id' => (int)$result['id'],
             'vendor_id' => $this->vendor->id
         ];
     }
