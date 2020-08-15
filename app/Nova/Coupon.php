@@ -30,7 +30,7 @@ class Coupon extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name', 'description'
+        'id', 'code', 'description'
     ];
 
     /**
