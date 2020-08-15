@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use Carbon\Carbon;
 
 class SearchController
 {
@@ -18,7 +19,9 @@ class SearchController
             $results = Product::orderBy('id', 'desc')->skip(request('skip') ?? 0)->limit(32)->get();
         }
 
-        $results = $results->load('vendor.coupons');
+        $results = $results->load([
+            'vendor.coupons' => fn ($query) => $query->where('expires_at', '>', Carbon::now())->orWhereNull('expires_at')->orderBy('expires_at', 'desc')
+        ]);
 
         if (request()->ajax()) {
             return response()->json(compact('results'));

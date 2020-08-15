@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 
@@ -44,6 +45,7 @@ class Coupon extends Resource
             ID::make()->sortable(),
             Text::make('Code'),
             Text::make('Description'),
+            DateTime::make('Expires at'),
             BelongsTo::make('Vendor')
         ];
     }

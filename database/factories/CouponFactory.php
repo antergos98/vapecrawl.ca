@@ -10,5 +10,6 @@ $factory->define(App\Coupon::class, function (Faker $faker) {
         'code' => $faker->name,
         'description' => $faker->text,
         'vendor_id' => factory(Vendor::class),
+        'expires_at' => null
     ];
 });

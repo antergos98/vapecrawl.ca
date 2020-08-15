@@ -30,10 +30,8 @@
                     <span class="text-lg font-bold">{{ price }} $</span>
                     <span v-if="!product.in_stock" class="inline-block bg-red-200 text-red-700 rounded-full text-xs px-2">Out of Stock</span>
                 </div>
-                <div v-show="product.vendor.coupons.length" class="flex flex-wrap -mx-1">
-                    <div class="px-1" v-for="coupon in product.vendor.coupons">
-                        <Coupon :item="coupon"></Coupon>
-                    </div>
+                <div v-show="product.vendor.coupons.length" class="space-y-1">
+                    <Coupon v-for="coupon in product.vendor.coupons" :key="coupon.id" :item="coupon"></Coupon>
                 </div>
             </div>
         </div>

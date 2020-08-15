@@ -28,6 +28,9 @@ class Kernel extends ConsoleKernel
             ->timezone('America/Toronto')
             ->dailyAt('02:00')
             ->thenPing('https://hc-ping.com/f22b2536-7af1-4ac9-82ad-d998e2eabfb5');
+
+        $schedule->command('destroy:expired:coupons')
+            ->monthly();
     }
 
     /**
