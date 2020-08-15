@@ -1,12 +1,10 @@
 @section('page_title', 'Home')
 
 <x-layout :is-home="true">
-    <div class="mb-12">
-        <h1 class="page-title">Welcome on Vapecrawl</h1>
+    <div class="mb-8">
+        <h1 class="text-3xl font-bold mb-3 md:text-5xl">Welcome on Vapecrawl, the best vape search engine in Canada!</h1>
         <p class="md:text-lg">
-            Vapecrawl is a simple vape search engine that lets you quickly find reputable Canadian vape vendors that
-            have the product you are looking for at the cheapest price as possible. We do not <span class="underline">own, sell or advertise</span>
-            any of the products listed on this site.
+            Vapecrawl is a <span class="underline">vape search engine</span> that lets you search across dozens of Canadian vendors ({{ \App\Vendor::enabled()->count() }} to be exact) to find the products you are looking for at the best price.
         </p>
     </div>
     @include('shared._search_form_suggestions')

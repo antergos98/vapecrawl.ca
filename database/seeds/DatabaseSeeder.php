@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
 
         foreach($vendors as $vendor) {
             factory(Product::class, 20)->create(['vendor_id' => $vendor]);
-            factory(Coupon::class)->create();
+            factory(Coupon::class)->create(['description' => "'reddit' for 10% off",'vendor_id' => $vendor]);
         }
 
         factory(User::class)->create([

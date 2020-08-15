@@ -9,7 +9,7 @@
     <title>@yield('page_title') - Vapecrawl.ca</title>
 
     <meta name="description"
-          content="Vapecrawl.ca is a search engine for vape stuff where you can quickly find Canadian vendors that have the cheapest vape products you are looking for.">
+          content="Vapecrawl is a vape search engine that lets you search across dozens of Canadian vendors to find the products you are looking for at the best price.">
 
     @includeWhen(app()->environment('production'), 'shared._analytics')
 
@@ -23,12 +23,12 @@
 <body class="bg-gray-900 text-white font-nunito border-t-8 border-purple-600 antialiased">
 <div id="app" class="flex flex-col min-h-screen justify-between">
     <div>
-        <div class="mt-6 mb-24 sm:mb-32">
+        <div class="mt-6 mb-16 {{ $attributes['is-home'] ? 'sm:mb-32' : 'sm:mb-24' }}">
             @include('shared._header')
         </div>
 
         <main class="mb-8">
-            <div class="{{ $attributes['is-home'] ? 'max-w-4xl' : 'max-w-screen-xl' }} mx-auto px-6 xl:px-0 mb-6">
+            <div class="{{ $attributes['is-home'] ? 'max-w-5xl' : 'max-w-screen-xl' }} mx-auto px-6 xl:px-0 mb-6">
                 {{ $slot }}
             </div>
         </main>

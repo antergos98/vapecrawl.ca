@@ -2,7 +2,7 @@
     <div class="w-full sm:w-5/6 mb-2 sm:mb-0">
         <div class="px-3">
             <input type="text" class="w-full p-3 rounded outline-none text-gray-900"
-                   placeholder="Search for products..." name="q">
+                   placeholder="Search for products... (Leave empty to explore)" name="q">
         </div>
     </div>
     <div class="w-full sm:w-1/6">
@@ -13,7 +13,7 @@
         </div>
     </div>
 </form>
-<div class="mt-2 ml-1 text-sm block">
+<div class="mt-2 ml-1 text-sm block mb-5">
     Popular:
     <a class="underline" href="/search?q=blotto+rta">Blotto RTA</a>,
     <a class="underline" href="/search?q=aegis+legend">Aegis Legend</a>,
