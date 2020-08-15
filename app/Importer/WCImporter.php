@@ -30,7 +30,7 @@ class WCImporter implements ImporterInterface
 
             foreach ($results as $result) {
                 $normalized = $this->getNormalizedResult($result);
-                if ($normalized['price'] !== "0" && $normalized['image']) {
+                if (($normalized['price'] !== "0" && $normalized['price'] !== "") && $normalized['image']) {
                     $products[] = $normalized;
                 }
             }
@@ -45,7 +45,7 @@ class WCImporter implements ImporterInterface
     {
         return [
             'name' => $result['name'],
-            'price' => $result['prices']['sale_price'],
+            'price' => is_float($result['prices']['sale_price']) ? (int) ((float)$result['prices']['sale_price'] * 100) : $result['prices']['sale_price'],
             'image' => $result['images'][0]['src'] ?? null,
             'in_stock' => $result['is_in_stock'],
             'url' => $result['permalink'],
