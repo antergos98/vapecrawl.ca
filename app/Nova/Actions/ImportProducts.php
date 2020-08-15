@@ -3,12 +3,17 @@
 namespace App\Nova\Actions;
 
 use App\Vendor;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
 
-class ImportProducts extends Action
+class ImportProducts extends Action implements ShouldQueue
 {
+    use InteractsWithQueue, Queueable;
+
     /**
      * Perform the action on the given models.
      *
