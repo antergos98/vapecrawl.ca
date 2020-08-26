@@ -9,17 +9,7 @@ class Vendor extends Model
 {
     use Actionable;
 
-    protected $fillable = ['name', 'url', 'class_name', 'enabled'];
-
-    public function scopeEnabled($query)
-    {
-        return $query->where('enabled', true);
-    }
-
-    public function scopeDisabled($query)
-    {
-        return $query->where('enabled', false);
-    }
+    protected $fillable = ['name', 'url', 'class_name'];
 
     public function products()
     {

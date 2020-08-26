@@ -9,7 +9,6 @@ $factory->define(Vendor::class, function (Faker $faker) {
     return [
         'name' => $faker->unique()->word,
         'url' => $faker->unique()->url,
-        'class_name' => 'ShopifyImporter',
-        'enabled' => true
+        'class_name' => 'ShopifyImporter'
     ];
 });

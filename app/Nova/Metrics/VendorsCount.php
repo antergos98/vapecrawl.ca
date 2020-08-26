@@ -5,7 +5,7 @@ namespace App\Nova\Metrics;
 use App\Vendor;
 use Laravel\Nova\Metrics\Value;
 
-class EnabledVendorsCount extends Value
+class VendorsCount extends Value
 {
     public $name = "Number of enabled vendors";
 
@@ -16,7 +16,7 @@ class EnabledVendorsCount extends Value
      */
     public function calculate()
     {
-        return $this->result(Vendor::enabled()->count());
+        return $this->result(Vendor::count());
     }
 
     /**
@@ -46,6 +46,6 @@ class EnabledVendorsCount extends Value
      */
     public function uriKey()
     {
-        return 'enabled-vendors-count';
+        return 'vendors-count';
     }
 }

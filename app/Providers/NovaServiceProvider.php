@@ -2,10 +2,8 @@
 
 namespace App\Providers;
 
-use App\Nova\Metrics\DisabledVendorsCount;
-use App\Nova\Metrics\EnabledVendorsCount;
-use App\Nova\Metrics\ProductsCount;
 use App\Nova\Metrics\VendorsCount;
+use App\Nova\Metrics\ProductsCount;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
@@ -59,9 +57,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
-            EnabledVendorsCount::make()->width('1/3'),
-            DisabledVendorsCount::make()->width('1/3'),
-            ProductsCount::make()->width('1/3'),
+            VendorsCount::make()->width('1/2'),
+            ProductsCount::make()->width('1/2'),
         ];
     }
 

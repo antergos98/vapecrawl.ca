@@ -34,10 +34,8 @@ class DestroyExpiredCoupons extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return int
      */
-    public function handle()
+    public function handle(): void
     {
         $coupons = Coupon::where('expires_at', '<', Carbon::now())->get();
         Coupon::destroy($coupons->pluck('id'));

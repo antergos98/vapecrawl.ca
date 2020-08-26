@@ -46,7 +46,7 @@ class ImportProductsCommand extends Command
     {
         Product::truncate();
 
-        Vendor::enabled()->get()->each(function(Vendor $vendor) {
+        Vendor::all()->each(function(Vendor $vendor) {
             try {
                 $this->info('Starting to fetch products from ' . $vendor->name);
                 $class = "App\\Importer\\" . $vendor->class_name;
@@ -55,7 +55,6 @@ class ImportProductsCommand extends Command
             } catch (Exception $e) {
                 // If there's any error with the import, disable the vendor and delete it's products
                 Honeybadger::notify($e);
-                $vendor->update(['enabled' => false]);
                 $vendor->products()->delete();
             }
         });
