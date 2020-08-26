@@ -2,13 +2,11 @@
 
 namespace App\Nova;
 
-use App\Nova\Actions\DeleteProducts;
 use App\Nova\Actions\ImportProducts;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Boolean;
 
 class Vendor extends Resource
 {
@@ -106,8 +104,7 @@ class Vendor extends Resource
     public function actions(Request $request)
     {
         return [
-            ImportProducts::make(),
-            DeleteProducts::make()
+            ImportProducts::make()
         ];
     }
 }
