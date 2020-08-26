@@ -2,7 +2,6 @@
 
 namespace Tests\Unit;
 
-
 use App\Coupon;
 use App\Product;
 use App\Vendor;
