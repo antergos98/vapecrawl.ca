@@ -7,7 +7,7 @@ use Laravel\Nova\Metrics\Value;
 
 class ProductsCount extends Value
 {
-    public $name = "Number of products";
+    public $name = "Products count";
 
     /**
      * Calculate the value of the metric.

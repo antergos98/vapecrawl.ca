@@ -7,7 +7,7 @@ use Laravel\Nova\Metrics\Value;
 
 class VendorsCount extends Value
 {
-    public $name = "Number of enabled vendors";
+    public $name = "Vendors count";
 
     /**
      * Calculate the value of the metric.
