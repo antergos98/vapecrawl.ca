@@ -54,7 +54,6 @@ class Vendor extends Resource
                 ->help('Don\'t forget the \'/\' at the end')
                 ->creationRules('unique:vendors,url')
                 ->updateRules('unique:vendors,url,{{resourceId}}'),
-            Boolean::make('Enabled'),
             Text::make('Products', fn ($vendor) => $vendor->products()->count())
                 ->onlyOnIndex(),
             Text::make('Class Name')
