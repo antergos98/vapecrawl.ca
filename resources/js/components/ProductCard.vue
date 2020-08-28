@@ -1,6 +1,6 @@
 <template>
-    <div class="bg-gray-800 rounded flex-1 flex p-4 items-center nner">
-        <div class="flex flex-row">
+    <div class="bg-gray-800 rounded flex-1 flex-col flex p-4">
+        <div class="flex flex-row w-full">
             <div class="flex flex-shrink-0 mr-6 h-full">
                 <div class="object-cover w-32 h-32 h-full">
                     <a :href="product.url" rel="noopener" target="_blank"
@@ -26,14 +26,17 @@
                         </a>
                     </div>
                 </div>
-                <div class="flex items-center space-x-3" :class="{'mb-3': product.vendor.coupons.length}">
+                <div class="flex sm:items-center flex-col sm:flex-row sm:space-x-3" :class="{'mb-3': product.vendor.coupons.length}">
                     <span class="text-lg font-bold">{{ price }} $</span>
-                    <span v-if="!product.in_stock" class="inline-block bg-red-200 text-red-700 rounded-full text-xs px-2">Out of Stock</span>
+                    <span v-if="!product.in_stock" class="inline-block mr-auto bg-red-200 text-red-700 rounded-full text-xs px-2">Out of Stock</span>
                 </div>
-                <div v-show="product.vendor.coupons.length" class="space-x-1 space-y-1">
+                <div v-show="product.vendor.coupons.length" class="flex-col space-y-2 hidden lg:flex">
                     <Coupon v-for="coupon in product.vendor.coupons" :key="coupon.id" :item="coupon"></Coupon>
                 </div>
             </div>
+        </div>
+        <div v-show="product.vendor.coupons.length" class="mt-4 flex flex-col space-y-2 lg:hidden lg:mt-0">
+            <Coupon v-for="coupon in product.vendor.coupons" :key="coupon.id" :item="coupon"></Coupon>
         </div>
     </div>
 </template>

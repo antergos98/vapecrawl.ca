@@ -7,7 +7,7 @@
         </div>
         <Filters/>
         <div class="flex flex-wrap -mx-3 overflow-hidden">
-            <div v-for="item in $store.getters.filteredResults" :key="item.id" class="w-full md:w-1/2 px-3 mb-6 flex items-stretch">
+            <div v-for="item in $store.getters.filteredResults" :key="item.id" class="w-full md:w-1/2 px-3 mb-6 flex">
                 <ProductCard :product="item"></ProductCard>
             </div>
         </div>
