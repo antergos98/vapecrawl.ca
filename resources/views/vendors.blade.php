@@ -1,4 +1,4 @@
-@section('page_title', 'Vendors')
+@section('page_title', 'Vendors -')
 
 <x-layout>
     <h1 class="page-title">Discover vendors that are indexed on Vapecrawl</h1>

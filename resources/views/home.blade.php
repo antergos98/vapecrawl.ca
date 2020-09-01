@@ -1,4 +1,4 @@
-@section('page_title', 'Home')
+@section('page_title', '')
 
 <x-layout :is-home="true">
     <div class="mb-8">

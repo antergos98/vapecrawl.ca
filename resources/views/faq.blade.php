@@ -1,4 +1,4 @@
-@section('page_title', 'FAQ')
+@section('page_title', 'Frequently Asked Questions - ')
 
 <x-layout>
     <h1 class="page-title">Frequently Asked Questions</h1>

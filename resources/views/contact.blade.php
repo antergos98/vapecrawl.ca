@@ -1,4 +1,4 @@
-@section('page_title', 'Contact us')
+@section('page_title', 'Contact us -')
 
 <x-layout>
     <h1 class="page-title">Contact us</h1>

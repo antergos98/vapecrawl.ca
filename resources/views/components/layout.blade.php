@@ -6,7 +6,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('page_title') - Vapecrawl.ca</title>
+    <title>@yield('page_title') Vapecrawl - The best vape search engine in Canada</title>
 
     <meta name="description"
           content="Vapecrawl is a vape search engine that lets you search across dozens of Canadian vendors to find the products you are looking for at the best price.">
