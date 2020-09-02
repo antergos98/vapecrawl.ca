@@ -3,7 +3,7 @@
         <div class="lg:flex lg:flex-row">
             <div class="mb-4 sm:w-3/4 lg:w-auto sm:mx-auto lg:m-0 lg:mr-6">
                 <a :href="product.url" :title="product.name" rel="noopener" target="_blank">
-                    <img v-lazy="product.image" class="object-cover h-48 w-full lg:w-32 lg:h-32 rounded bg-white" :alt="product.name">
+                    <img v-lazy="product.image" class="object-cover h-48 w-full max-w-none rounded bg-white lg:w-32 lg:h-32" :alt="product.name">
                 </a>
             </div>
             <div class="lg:flex lg:flex-col lg:justify-between">
