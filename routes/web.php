@@ -19,5 +19,4 @@ Route::view('/', 'home');
 Route::get('/search', 'SearchController');
 Route::view('/contact', 'contact');
 Route::get('/vendors', 'VendorsController');
-Route::view('/faq', 'faq');
 
