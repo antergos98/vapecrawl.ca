@@ -15,16 +15,10 @@ require('laravel-mix-purgecss');
 
 mix
     .js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
-    .options({
-        processCssUrls: false,
-        postCss: [tailwindcss('./tailwind.config.js')],
-    })
-    .disableNotifications()
+    .postCss('resources/css/app.css', 'public/css', [
+        require('tailwindcss'),
+    ])
     .sourceMaps()
-    .purgeCss();
-
-if (mix.inProduction()) {
-    mix.version();
-}
+    .purgeCss()
+    .version();
 
