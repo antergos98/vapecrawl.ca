@@ -24,7 +24,7 @@
                     </strong>
                 </div>
                 <div class="ml-auto">
-                    <button class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded" @click="validate">
+                    <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded" @click="validate">
                         Yes
                     </button>
                     <button class="bg-transparent text-black font-semibold py-2 px-4 focus:outline-none" @click="close">
