@@ -1,4 +1,4 @@
-<svg class="h-12 w-12 fill-current" version="1.2"
+<svg class="h-16 w-16 fill-current" version="1.2"
      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 417.42"
      overflow="visible" xml:space="preserve">
                 <path fill="#FFFFFF" d="M463.23,14.79l-0.14-0.09C444.73,2.5,422.7-1.83,401.08,2.52c-21.62,4.36-40.26,16.87-52.46,35.24

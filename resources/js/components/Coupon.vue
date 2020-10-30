@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-purple-300 text-sm rounded-full px-2 text-purple-700 mr-auto">
+    <div class="bg-indigo-300 text-sm rounded-full px-2 text-indigo-700 mr-auto">
         <div class="flex items-center">
             <svg class="w-4 h-4 inline-block mr-1" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd"

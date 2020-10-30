@@ -1,6 +1,6 @@
 <template>
     <div @click="scrollToTop" ref="backToTop"
-         class="transition duration-200 ease-in-out fixed z-40 p-3 bg-purple-600 hover:bg-purple-700 rounded-full shadow cursor-pointer"
+         class="transition duration-200 ease-in-out fixed z-40 p-3 bg-indigo-600 hover:bg-indigo-700 rounded-full shadow-lg cursor-pointer"
          style="bottom: 20px; right: 20px; display: none;">
         <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd"

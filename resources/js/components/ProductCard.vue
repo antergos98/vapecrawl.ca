@@ -11,7 +11,7 @@
                     <a :href="product.url" :title="product.name" rel="noopener" class="text-xl font-semibold underline">
                         {{ product.name }}
                     </a>
-                    <a :href="product.vendor.url" rel="noopener" :title="product.vendor.name" class="text-sm hover:underline text-purple-500 hidden lg:block">
+                    <a :href="product.vendor.url" rel="noopener" :title="product.vendor.name" class="text-sm hover:underline text-indigo-500 hidden lg:block">
                         {{ product.vendor.name }}
                     </a>
                 </div>
@@ -27,7 +27,7 @@
                             <span class="inline-block mr-auto bg-red-200 text-red-700 rounded-full text-sm px-2">Out of Stock</span>
                         </div>
                     </div>
-                    <a :href="product.vendor.url" rel="noopener" :title="product.vendor.name" class="text-sm hover:underline text-purple-500 lg:hidden">
+                    <a :href="product.vendor.url" rel="noopener" :title="product.vendor.name" class="text-sm hover:underline text-indigo-500 lg:hidden">
                         {{ product.vendor.name }}
                     </a>
                 </div>
