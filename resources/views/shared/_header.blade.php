@@ -9,8 +9,8 @@
             <div>
                 <ul class="flex font-bold space-x-6">
                     <li><a class="hover:underline" href="/search">Search</a></li>
-                    <li><a class="hover:underline" href="/contact">Contact us</a></li>
                     <li><a class="hover:underline" href="/vendors">Vendors</a></li>
+                    <li><a class="hover:underline" href="/contact">Contact us</a></li>
                 </ul>
             </div>
         </div>

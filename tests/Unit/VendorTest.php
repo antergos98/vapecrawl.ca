@@ -32,4 +32,15 @@ class VendorTest extends TestCase
         $this->assertCount(2, $vendor->coupons);
         $this->assertInstanceOf(Collection::class, $vendor->coupons);
     }
+
+    /** @test */
+    public function it_has_active_coupons()
+    {
+        $vendor = factory(Vendor::class)->create();
+        $activeCoupon = factory(Coupon::class)->create(['vendor_id' => $vendor->id, 'expires_at' => now()->addDay()]);
+        $expiredCoupon = factory(Coupon::class)->create(['vendor_id' => $vendor->id, 'expires_at' => now()->subDay()]);
+
+        $this->assertCount(1, $vendor->activeCoupons);
+        $this->assertInstanceOf(Collection::class, $vendor->activeCoupons);
+    }
 }

@@ -20,7 +20,7 @@ class SearchController
         }
 
         $results = $results->load([
-            'vendor.coupons' => fn ($query) => $query->where('expires_at', '>', Carbon::now())->orWhereNull('expires_at')->orderBy('expires_at', 'desc')
+            'vendor.coupons' => fn ($query) => $query->notExpired()
         ]);
 
         if (request()->ajax()) {

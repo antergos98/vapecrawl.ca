@@ -20,4 +20,9 @@ class Vendor extends Model
     {
         return $this->hasMany(Coupon::class);
     }
+
+    public function activeCoupons()
+    {
+        return $this->hasMany(Coupon::class)->notExpired();
+    }
 }
