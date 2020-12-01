@@ -43,8 +43,6 @@ class VendorsTest extends TestCase
             'expires_at' => now()->subDay()
         ]);
 
-        dump($coupon->description);
-
         $this->get('/vendors')
             ->assertDontSeeText($coupon->description);
     }
