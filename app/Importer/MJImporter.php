@@ -38,7 +38,7 @@ class MJImporter implements ImporterInterface
                 'name' => $name,
                 'image' => $image,
                 'price' => $price,
-                'url' => $url,
+                'url' => "https://www.montgomeryjames.ca$url",
                 'vendor_id' => $this->vendor->id,
                 'in_stock' => true
             ];
