@@ -30,6 +30,7 @@ class ImportProducts extends Action implements ShouldQueue
                 $importer = new $class($vendor);
                 $importer->import();
                 $vendor->products()->searchable();
+                $vendor->forceFill(['products_refreshed_at' => now()])->save();
                 $this->markAsFinished($vendor);
             } catch (\Exception $e) {
                 $this->markAsFailed($vendor, $e);

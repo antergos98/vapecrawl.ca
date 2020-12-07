@@ -51,6 +51,7 @@ class ImportProductsCommand extends Command
                 $class = "App\\Importer\\" . $vendor->class_name;
                 $importer = new $class($vendor);
                 $importer->import();
+                $vendor->forceFill(['products_refreshed_at' => now()])->save();
             } catch (Exception $e) {
                 // If there's any error with the import, disable the vendor and delete it's products
                 report($e);
