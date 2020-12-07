@@ -2,6 +2,7 @@
 
 namespace App\Importer;
 
+use App\Helpers\PriceFormatter;
 use App\Models\Product;
 use App\Models\Vendor;
 use Illuminate\Support\Facades\Http;
@@ -9,10 +10,12 @@ use Illuminate\Support\Facades\Http;
 class DashvapesImporter implements ImporterInterface
 {
     private Vendor $vendor;
+    private PriceFormatter $priceFormatter;
 
     public function __construct(Vendor $vendor)
     {
         $this->vendor = $vendor;
+        $this->priceFormatter = new PriceFormatter;
     }
 
     public function import(): void
@@ -23,7 +26,7 @@ class DashvapesImporter implements ImporterInterface
             ->map(function ($product) {
                 return [
                     'name' => $product['name'] . ' - ' . $product['brand'],
-                    'price' => (int)((float)$product['price'] * 100),
+                    'price' => $this->priceFormatter->format($product['price']),
                     'image' => $product['image'],
                     'in_stock' => $product['availability'] === "In Stock",
                     'url' => $product['url'],

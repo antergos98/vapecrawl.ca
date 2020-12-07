@@ -2,6 +2,7 @@
 
 namespace App\Importer;
 
+use App\Helpers\PriceFormatter;
 use App\Models\Product;
 use App\Models\Vendor;
 use Illuminate\Support\Facades\Http;
@@ -9,10 +10,12 @@ use Illuminate\Support\Facades\Http;
 class ShopifyImporter implements ImporterInterface
 {
     private Vendor $vendor;
+    private PriceFormatter $priceFormatter;
 
     public function __construct(Vendor $vendor)
     {
         $this->vendor = $vendor;
+        $this->priceFormatter = new PriceFormatter;
     }
 
     public function import(): void
@@ -45,7 +48,7 @@ class ShopifyImporter implements ImporterInterface
     {
         return [
             'name' => $result['title'],
-            'price' => isset($result['variants'][0]['price']) ? (int)((float)$result['variants'][0]['price'] * 100) : 0,
+            'price' => $this->priceFormatter->format($result['variants'][0]['price']),
             'image' => $result['images'][0]['src'] ?? null,
             'in_stock' => $result['variants'][0]['available'] ?? false,
             'url' => $this->vendor->url . 'products/' . $result['handle'],

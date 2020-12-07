@@ -2,6 +2,7 @@
 
 namespace App\Importer;
 
+use App\Helpers\PriceFormatter;
 use App\Models\Product;
 use App\Models\Vendor;
 use Illuminate\Support\Facades\Http;
@@ -9,10 +10,12 @@ use Illuminate\Support\Facades\Http;
 class WCImporter implements ImporterInterface
 {
     private Vendor $vendor;
+    private PriceFormatter $priceFormatter;
 
     public function __construct(Vendor $vendor)
     {
         $this->vendor = $vendor;
+        $this->priceFormatter = new PriceFormatter;
     }
 
     public function import(): void
@@ -45,7 +48,7 @@ class WCImporter implements ImporterInterface
     {
         return [
             'name' => $result['name'],
-            'price' => is_float($result['prices']['sale_price']) ? (int) ((float)$result['prices']['sale_price'] * 100) : $result['prices']['sale_price'],
+            'price' => $this->priceFormatter->format($result['prices']['sale_price']),
             'image' => $result['images'][0]['src'] ?? null,
             'in_stock' => $result['is_in_stock'],
             'url' => $result['permalink'],

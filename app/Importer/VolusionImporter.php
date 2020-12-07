@@ -2,6 +2,7 @@
 
 namespace App\Importer;
 
+use App\Helpers\PriceFormatter;
 use App\Models\Product;
 use App\Models\Vendor;
 use Goutte\Client;
@@ -13,11 +14,13 @@ class VolusionImporter implements ImporterInterface
     private Vendor $vendor;
     private Client $client;
     private array $products = [];
+    private PriceFormatter $priceFormatter;
 
     public function __construct(Vendor $vendor)
     {
         $this->vendor = $vendor;
         $this->client = new Client();
+        $this->priceFormatter = new PriceFormatter;
     }
 
     public function import(): void
@@ -40,8 +43,6 @@ class VolusionImporter implements ImporterInterface
                 if ($this->client->getResponse()->getStatusCode() !== 404) {
                     $name = $page->filter("span[itemprop='name']")->text();
                     $price = $page->filter("span[itemprop='price']")->count() ? $page->filter("span[itemprop='price']")->attr('content') : 0;
-                    $price = (float)$price;
-                    $price = $price * 100;
 
                     $image = $page->filter('img#product_photo')->count() ? $page->filter('img#product_photo')->attr('src') : null;
 
@@ -54,7 +55,7 @@ class VolusionImporter implements ImporterInterface
 
                     $this->products[] = [
                         'name' => $name,
-                        'price' => $price,
+                        'price' => $this->priceFormatter->format($price),
                         'image' => $image,
                         'in_stock' => $in_stock,
                         'url' => $product_url,
