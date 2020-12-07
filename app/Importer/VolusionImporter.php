@@ -43,7 +43,7 @@ class VolusionImporter implements ImporterInterface
                     $price = (float)$price;
                     $price = $price * 100;
 
-                    $image = $page->filter('img#product_photo')->attr('src');
+                    $image = $page->filter('img#product_photo')->count() ? $page->filter('img#product_photo')->attr('src') : null;
 
                     if (!Str::of($image)->lower()->contains($this->vendor->url) && !Str::of($image)->startsWith('//')) {
                         $image = $this->vendor->url . $image;
