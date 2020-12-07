@@ -13,7 +13,7 @@ class Vendor extends Model
 
     protected $casts = [
         'products_refreshed_at' => 'datetime'
-    ],
+    ];
 
     public function products()
     {
