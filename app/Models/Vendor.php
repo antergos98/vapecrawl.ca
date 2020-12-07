@@ -11,6 +11,10 @@ class Vendor extends Model
 
     protected $fillable = ['name', 'url', 'class_name'];
 
+    protected $casts = [
+        'products_refreshed_at' => 'datetime'
+    ],
+
     public function products()
     {
         return $this->hasMany(Product::class);
