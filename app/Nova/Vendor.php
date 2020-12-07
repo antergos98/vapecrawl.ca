@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use App\Nova\Actions\ImportProducts;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
@@ -53,6 +54,8 @@ class Vendor extends Resource
                 ->creationRules('unique:vendors,url')
                 ->updateRules('unique:vendors,url,{{resourceId}}'),
             Text::make('Products', fn ($vendor) => $vendor->products()->count())
+                ->onlyOnIndex(),
+            DateTime::make('Products Refreshed At')
                 ->onlyOnIndex(),
             Text::make('Class Name')
                 ->hideFromIndex()
