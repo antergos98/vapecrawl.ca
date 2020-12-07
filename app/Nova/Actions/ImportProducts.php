@@ -3,7 +3,6 @@
 namespace App\Nova\Actions;
 
 use App\Models\Vendor;
-use Honeybadger\HoneybadgerLaravel\Facades\Honeybadger;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;

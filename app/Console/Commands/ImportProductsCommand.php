@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use App\Models\Product;
 use App\Models\Vendor;
 use Exception;
-use Honeybadger\HoneybadgerLaravel\Facades\Honeybadger;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Laravel\Scout\Console\FlushCommand;
