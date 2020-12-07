@@ -15,7 +15,7 @@ class Coupon extends Resource
      *
      * @var string
      */
-    public static $model = \App\Coupon::class;
+    public static $model = \App\Models\Coupon::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

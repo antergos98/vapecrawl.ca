@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Vendor;
+use App\Models\Vendor;
 
 class VendorsController
 {

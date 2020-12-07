@@ -2,7 +2,7 @@
 
 namespace App\Nova\Metrics;
 
-use App\Product;
+use App\Models\Product;
 use Laravel\Nova\Metrics\Value;
 
 class ProductsCount extends Value

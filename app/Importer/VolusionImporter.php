@@ -2,8 +2,8 @@
 
 namespace App\Importer;
 
-use App\Product;
-use App\Vendor;
+use App\Models\Product;
+use App\Models\Vendor;
 use Goutte\Client;
 use Illuminate\Support\Str;
 use Symfony\Component\DomCrawler\Crawler;

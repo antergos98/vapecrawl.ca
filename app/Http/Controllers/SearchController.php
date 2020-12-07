@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
-use Carbon\Carbon;
+use App\Models\Product;
 
 class SearchController
 {

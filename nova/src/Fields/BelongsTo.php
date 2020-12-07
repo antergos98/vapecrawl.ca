@@ -269,7 +269,7 @@ class BelongsTo extends Field implements RelatableField
                           );
 
         return $query->tap(function ($query) use ($request, $model) {
-            forward_static_call($this->associatableQueryCallable($request, $model), $request, $query);
+            forward_static_call($this->associatableQueryCallable($request, $model), $request, $query, $this);
         });
     }
 
@@ -393,6 +393,7 @@ class BelongsTo extends Field implements RelatableField
         return array_merge([
             'belongsToId' => $this->belongsToId,
             'belongsToRelationship' => $this->belongsToRelationship,
+            'debounce' => $this->debounce,
             'displaysWithTrashed' => $this->displaysWithTrashed,
             'label' => forward_static_call([$this->resourceClass, 'label']),
             'resourceName' => $this->resourceName,

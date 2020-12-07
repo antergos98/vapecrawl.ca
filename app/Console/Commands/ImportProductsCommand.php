@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Product;
-use App\Vendor;
+use App\Models\Product;
+use App\Models\Vendor;
 use Exception;
 use Honeybadger\HoneybadgerLaravel\Facades\Honeybadger;
 use Illuminate\Console\Command;
@@ -54,7 +54,7 @@ class ImportProductsCommand extends Command
                 $importer->import();
             } catch (Exception $e) {
                 // If there's any error with the import, disable the vendor and delete it's products
-                Honeybadger::notify($e);
+                report($e);
                 $vendor->products()->delete();
             }
         });

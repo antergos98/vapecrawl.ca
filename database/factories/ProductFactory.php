@@ -2,10 +2,10 @@
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use App\Vendor;
+use App\Models\Vendor;
 use Faker\Generator as Faker;
 
-$factory->define(App\Product::class, function (Faker $faker) {
+$factory->define(App\Models\Product::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'price' => $faker->randomNumber(),

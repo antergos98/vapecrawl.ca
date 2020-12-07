@@ -2,8 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Coupon;
-use Carbon\Carbon;
+use App\Models\Coupon;
 use Illuminate\Console\Command;
 
 class DestroyExpiredCoupons extends Command
@@ -37,7 +36,7 @@ class DestroyExpiredCoupons extends Command
      */
     public function handle(): void
     {
-        $coupons = Coupon::where('expires_at', '<', Carbon::now())->get();
+        $coupons = Coupon::where('expires_at', '<', now())->get();
         Coupon::destroy($coupons->pluck('id'));
         $this->info("Destroyed " . count($coupons) . " coupons");
     }

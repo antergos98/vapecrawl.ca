@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
-use App\Coupon;
-use App\Vendor;
+use App\Models\Coupon;
+use App\Models\Vendor;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

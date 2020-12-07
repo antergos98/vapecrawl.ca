@@ -2,7 +2,7 @@
 
 namespace App\Nova\Actions;
 
-use App\Vendor;
+use App\Models\Vendor;
 use Honeybadger\HoneybadgerLaravel\Facades\Honeybadger;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -34,7 +34,7 @@ class ImportProducts extends Action implements ShouldQueue
                 $this->markAsFinished($vendor);
             } catch (\Exception $e) {
                 $this->markAsFailed($vendor, $e);
-                Honeybadger::notify($e);
+                report($e);
             }
         });
     }

@@ -2,7 +2,7 @@
 
 namespace App\Nova\Metrics;
 
-use App\Vendor;
+use App\Models\Vendor;
 use Laravel\Nova\Metrics\Value;
 
 class VendorsCount extends Value

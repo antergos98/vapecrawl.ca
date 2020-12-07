@@ -15,7 +15,7 @@ class Vendor extends Resource
      *
      * @var string
      */
-    public static $model = \App\Vendor::class;
+    public static $model = \App\Models\Vendor::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

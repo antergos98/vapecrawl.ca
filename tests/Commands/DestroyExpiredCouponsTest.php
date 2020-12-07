@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Feature\Commands;
+namespace Tests\Commands;
 
-use App\Coupon;
+use App\Models\Coupon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

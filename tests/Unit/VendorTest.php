@@ -2,9 +2,9 @@
 
 namespace Tests\Unit;
 
-use App\Coupon;
-use App\Product;
-use App\Vendor;
+use App\Models\Coupon;
+use App\Models\Product;
+use App\Models\Vendor;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Collection;
 use Tests\TestCase;
