@@ -29,6 +29,13 @@ class Kernel extends ConsoleKernel
             ->dailyAt('02:00')
             ->thenPing('https://hc-ping.com/f22b2536-7af1-4ac9-82ad-d998e2eabfb5');
 
+        $schedule
+            ->command('snapshot:create ' . now()->format('Y/m/d'))
+            ->environments('production')
+            ->timezone('America/Toronto')
+            ->dailyAt('00:00')
+            ->thenPing('https://hc-ping.com/78aed347-1827-4b0f-a66a-fe9555b7f41b');
+
         $schedule->command('destroy:expired:coupons')
             ->daily();
     }
