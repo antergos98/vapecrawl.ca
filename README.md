@@ -10,8 +10,12 @@ Vapecrawl.ca is a Laravel 8 and Vue.js vape search engine.
 ```bash
 cp .env.example .env
 docker run --rm -v $(pwd):/opt -w /opt laravelsail/php74-composer:latest composer install
+./vendor/bin/sail build
 ./vendor/bin/sail up -d
-./vendor/bin/sail exec laravel.test bash -c "php artisan key:generate && php artisan migrate --seed && npm install && npm run dev"
+./vendor/bin/sail artisan key:generate 
+./vendor/bin/sail artisan migrate --seed
+./vendor/bin/sail npm install
+./vendor/bin/sail npm run dev
 ```
 
 Visit http://localhost
