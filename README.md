@@ -8,20 +8,19 @@ Vapecrawl.ca is a Laravel 8 and Vue.js vape search engine.
 
 ## Setup
 ```bash
-docker run --rm -v $(pwd):/opt -w /opt laravelsail/php74-composer:latest composer install && php ./scripts/setup.php
+cat .env.example .env
+docker run --rm -v $(pwd):/opt -w /opt laravelsail/php74-composer:latest composer install
+./vendor/bin/sail up -d
+./vendor/bin/sail exec laravel.test bash -c "php artisan key:generate && php artisan migrate --seed && npm install && npm run dev"
 ```
-
-This command will
-- Setup your .env file
-- Generate an application key
-- Run migrations and seed the database with dummy data
-- Install node dependencies and run `npm run dev`
-- Start the development server
 
 Visit http://localhost
 
-## Testing
-Tests are run using an in-memory sqlite database
+## Useful commands
 ```bash
+# Run npm watcher
+./vendor/bin/sail npm run watch
+
+# Run tests
 ./vendor/bin/sail test
 ```
